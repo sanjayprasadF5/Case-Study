@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.17.1"
-  },
-  "devDependencies": {
+    "express": "^4.17.1",
     "nodemon": "^2.0.7"
   },
+  "devDependencies": {},
   "scripts": {
-    "dev":"nodemon ./admins/admins.js",
+    "admin-dev":"nodemon ./admins/admins.js",
+    "customer-dev":"nodemon ./customers/customers.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
