@@ -1,0 +1,24 @@
+{
+  "name": "CaseStudy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanjayprasadF5/Case-Study.git"
+  },
+  "keywords": [],
+  "author": "sanjay",
+  "license": "cg",
+  "bugs": {
+    "url": "https://github.com/sanjayprasadF5/Case-Study/issues"
+  },
+  "homepage": "https://github.com/sanjayprasadF5/Case-Study#readme"
+}
