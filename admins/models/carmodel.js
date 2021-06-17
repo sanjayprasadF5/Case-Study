@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-mongoose.model("Car", {
+
+module.exports = mongoose.model("Car", {
   name: {
     type: "string",
     require: true,
