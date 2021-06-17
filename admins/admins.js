@@ -9,9 +9,11 @@ app.use(bodyParser.json());
 
 //Initialing Routes
 app.use("/", require("./routes/carroutes"));
+app.use("/", require("./routes/serviceplanroutes"));
 
 //requiring Model
 require("./models/carmodel");
+require("./models/serviceplanmodel");
 
 //loading mongo
 const mongoose = require("mongoose");
