@@ -3,17 +3,17 @@ const mongoose = require("mongoose");
 module.exports = mongoose.model("Washer", {
   name: {
     type: "string",
-    requires: true,
+    require: true,
   },
 
   emailID: {
     type: "string",
-    requires: true,
+    require: true,
   },
 
   password: {
     type: "string",
-    requires: true,
+    require: true,
   },
 
   isApprove: {
