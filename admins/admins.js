@@ -12,6 +12,7 @@ app.use("/", require("./routes/carroutes"));
 app.use("/", require("./routes/serviceplanroutes"));
 app.use("/", require("./routes/washerroutes"));
 app.use("/", require("./routes/promocoderoutes"));
+app.use("/", require("./routes/adminroutes"));
 
 //requiring Model---no need of model ..model need in controller
 
