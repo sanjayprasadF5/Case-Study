@@ -13,6 +13,7 @@ app.use("/", require("./routes/serviceplanroutes"));
 app.use("/", require("./routes/washerroutes"));
 
 //requiring Model---no need of model ..model need in controller
+
 // require("./models/carmodel");
 // require("./models/serviceplanmodel");
 // require("./models/washermodel");
