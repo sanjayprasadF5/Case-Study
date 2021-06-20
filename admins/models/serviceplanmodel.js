@@ -15,7 +15,7 @@ module.exports = mongoose.model("ServicePlan", {
 
   cost: {
     type: Number,
-    require: [true, "Please enter cost"],
+    required: [true, "Please enter cost"],
   },
 
   description: {

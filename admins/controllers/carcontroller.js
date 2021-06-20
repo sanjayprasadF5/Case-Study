@@ -47,7 +47,7 @@ module.exports.postCar = (req, res) => {
   car
     .save()
     .then(() => {
-      res.status(car);
+      res.status(200).send(car);
     })
     .catch((err) => {
       // if (err) throw err;

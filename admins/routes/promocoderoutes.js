@@ -1,13 +1,20 @@
 const express = require("express");
-const router = require("./carroutes");
-const routes = express.Routes;
+const promocodecontroller = require("../controllers/promocodecontroller");
+const router = express.Router();
 
-router.post("/", () => {});
+//Create promo code
+router.post("/promocode", promocodecontroller.postpromocode);
 
-router.post("/", () => {});
+//Get all promocode
+router.get("/promocode", promocodecontroller.getpromocode);
 
-router.post("/", () => {});
+//Get promocode by id
+router.get("/promocode/:id", promocodecontroller.getpromocodeId);
 
-router.post("/", () => {});
+//Update the promocode
+router.put("/promocode/:id", promocodecontroller.updatepromocode);
+
+//Delete any promocode
+router.delete("/promocode/:id", promocodecontroller.deletepromocode);
 
 module.exports = router;
