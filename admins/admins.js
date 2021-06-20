@@ -11,8 +11,10 @@ app.use(bodyParser.json());
 app.use("/", require("./routes/carroutes"));
 app.use("/", require("./routes/serviceplanroutes"));
 app.use("/", require("./routes/washerroutes"));
+app.use("/", require("./routes/promocoderoutes"));
 
-//requiring Model
+//requiring Model---no need of model ..model need in controller
+
 // require("./models/carmodel");
 // require("./models/serviceplanmodel");
 // require("./models/washermodel");

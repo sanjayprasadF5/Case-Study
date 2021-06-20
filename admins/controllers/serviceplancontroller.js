@@ -1,5 +1,33 @@
 const ServicePlan = require("../models/serviceplanmodel");
 
+//Error handling
+
+const handlerError = (err) => {
+  console.log(err.message, err.code);
+
+  let errors = {
+    name: "",
+    time: "",
+    cost: "",
+    description: "",
+    status: "",
+  };
+
+  //duplicate errors --same service plan found
+  if (err.code === 11000) {
+    errors.name = "Service plan already exists";
+    return errors;
+  }
+
+  //validating errors
+  if (err.message.includes("ServicePlan validation failed")) {
+    Object.values(err.errors).forEach(({ properties }) => {
+      errors[properties.path] = properties.message;
+    });
+  }
+  return errors;
+};
+
 //Route handler for service plan routes
 
 //Post service plan
@@ -10,6 +38,7 @@ module.exports.postserviceplan = (req, res) => {
     time: req.body.time,
     cost: req.body.cost,
     description: req.body.description,
+    status: req.body.status,
   };
 
   var serviceplan = new ServicePlan(newserviceplan);
@@ -18,12 +47,13 @@ module.exports.postserviceplan = (req, res) => {
     .save()
     .then(() => {
       console.log("Service plan saved");
+      res.status(200).send(serviceplan);
     })
     .catch((err) => {
-      if (err) throw err;
+      //if (err) throw err;
+      const errors = handlerError(err);
+      res.status(400).send(errors);
     });
-
-  res.send(newserviceplan);
 };
 
 //Get All Service
