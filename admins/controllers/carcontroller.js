@@ -2,36 +2,27 @@ const Car = require("../models/carmodel");
 
 //Error handling
 
-const handlerError = (err) => {
-  console.log(err.message, err.code);
-
-  let errors = {
+//handling errors
+const handleErrors = (err) => {
+  let error = {
     name: "",
     carBrand: "",
     status: "",
   };
 
-  //duplicate errors code
-
+  //duplicate service plan name
   if (err.code === 11000) {
-    errors.name = "that car already exists";
-    return errors;
+    error.name = "Entered car model is already present";
+    return error;
   }
-
-  //validating errors
 
   if (err.message.includes("Car validation failed")) {
-    // console.log(err);
-    //console.log(err.errors);  -- give key with value
-    //console.log(Object.value(err.errors)); --- only values
     Object.values(err.errors).forEach(({ properties }) => {
-      errors[properties.path] = properties.message;
+      error[properties.path] = properties.message;
     });
   }
-
-  return errors;
+  return error;
 };
-
 //Route handlers for
 
 //Post car route handlers
@@ -54,7 +45,7 @@ module.exports.postCar = (req, res) => {
       // if (err) {
       //   res.status(400).send("Can't create car'");
       // }
-      const errors = handlerError(err);
+      const errors = handleErrors(err);
       res.status(400).send(errors);
     });
   // res.send(newCar);
@@ -87,7 +78,7 @@ module.exports.getCar = (req, res) => {
 module.exports.getCarID = (req, res) => {
   Car.findById(req.params.id)
     .then((car) => {
-      res.json(car);
+      res.status(200).json(car);
     })
     .catch((err) => {
       if (err) {
@@ -102,7 +93,7 @@ module.exports.updateCar = (req, res) => {
   Car.findByIdAndUpdate({ _id: req.params.id }, req.body)
     .then(function () {
       Car.findOne({ _id: req.params.id }).then(function (car) {
-        res.send(car);
+        res.status(200).send(car);
       });
     })
     .catch((err) => {
@@ -118,7 +109,7 @@ module.exports.updateCar = (req, res) => {
 module.exports.deleteCar = (req, res) => {
   Car.findByIdAndRemove({ _id: req.params.id })
     .then((car) => {
-      res.send(car);
+      res.status(200).send(car);
     })
     .catch((err) => {
       if (err) {

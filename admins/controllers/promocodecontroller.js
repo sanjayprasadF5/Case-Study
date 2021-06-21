@@ -3,7 +3,7 @@ const PromoCode = require("../models/promocodemodel");
 //Error handling
 
 const handlerError = (err) => {
-  console.log(err.message, err.code);
+  // console.log(err.message, err.code);
 
   let errors = {
     name: "",

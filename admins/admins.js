@@ -6,14 +6,17 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const app = express();
 
+//----------------------------------------------------------------/
+
 //Importing routes
 const adminroutes = require("./routes/adminroutes");
 const carroutes = require("./routes/carroutes");
 const promocoderoutes = require("./routes/promocoderoutes");
 const serviceplanroutes = require("./routes/serviceplanroutes");
 const washerroutes = require("./routes/washerroutes");
-
+const addonroutes = require("./routes/addonroutes");
 // ----------------------------------------------------------------/
+
 const swaggerUi = require("swagger-ui-express");
 // swaggerDocument = require("./swagger.json");
 swaggerDocument = require("./swaggerfile/carswagger.json");
@@ -30,6 +33,7 @@ app.use("/", [
   promocoderoutes,
   serviceplanroutes,
   washerroutes,
+  addonroutes,
 ]);
 app.use(express.json());
 
