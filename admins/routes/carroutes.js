@@ -30,18 +30,27 @@ router.post("/car", carcontroller.postCar);
 //  *
 //  */
 
-/**
- * @openapi
- * /car:
- *  get:
- *    description: Get all cars
- *    responses:
- *      '201':
- *        description: A successful response
- *      '400' :
- *        description: Error occured
- */
+// /**
+//  * @openapi
+//  * /car:
+//  *  get:
+//  *    description: Get all cars
+//  *    responses:
+//  *      '201':
+//  *        description: A successful response
+//  *      '400' :
+//  *        description: Error occured
+//  */
 
+/**
+ * @swagger
+ * /car:
+ * get:
+ *    description: Use to request all cars
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ */
 router.get("/car", carcontroller.getCar);
 
 //Get car by id

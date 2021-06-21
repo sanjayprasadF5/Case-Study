@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+// const cookieParser = require("cookie-parser");
 
 //set up express app
 const app = express();
@@ -8,16 +9,30 @@ const app = express();
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 
-//use bodyParser middleware
-app.use(bodyParser.json());
-
 //Initialing Routes
+// const carroutes = require("./routes/carroutes");
+// const serviceplanroutes = require("./routes/serviceplanroutes");
+// const washerroutes = require("./routes/washerroutes");
+// const promocoderoutes = require("./routes/promocoderoutes");
+// const adminroutes = require("./routes/adminroutes");
+
+//another way
 app.use("/", require("./routes/carroutes"));
 app.use("/", require("./routes/serviceplanroutes"));
 app.use("/", require("./routes/washerroutes"));
 app.use("/", require("./routes/promocoderoutes"));
 app.use("/", require("./routes/adminroutes"));
 
+//use middleware
+app.use(express.json());
+// app.use(cookieParser());
+// app.use("/", [
+//   carroutes,
+//   serviceplanroutes,
+//   washerroutes,
+//   promocoderoutes,
+//   adminroutes,
+// ]);
 //requiring Model---no need of model ..model need in controller
 
 // require("./models/carmodel");
@@ -36,7 +51,11 @@ const swaggerOptions = {
       contact: {
         name: "Sanjay Prasad",
       },
-      server: [{ url: "http://localhost:5000" }],
+      server: [
+        {
+          url: "http://localhost:5000/",
+        },
+      ],
     },
   },
   apis: ["./routes/*.js"],
