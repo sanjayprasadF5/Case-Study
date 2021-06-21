@@ -1,16 +1,40 @@
 const express = require("express");
+
 const router = express.Router();
-//const Car = require("../models/carmodel");--- node need here as well
+const bodyParser = require("body-parser");
+
 const carcontroller = require("../controllers/carcontroller");
 //Routes for car
+
+// /**
+//  * @swagger
+//  * /car:
+//  *  get:
+//  *    description: Get all cars
+//  *    responses:
+//  *      '201':
+//  *        description: A successful response
+//  *      '400' :
+//  *        description: Error occured
+//  */
+/**
+ * @swagger
+ * "/car": {
+    "get": {
+      "tags": ["car"],
+      "summary": "Get all users in system",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": "#/definitions/Users"
+ */
+
+router.get("/car", carcontroller.getCar);
 
 //POST routes to create new car
 router.post("/car", carcontroller.postCar);
 
-//All car
-router.get("/car", carcontroller.getCar);
-
-//Get car by id
 router.get("/car/:id", carcontroller.getCarID);
 
 //update Car

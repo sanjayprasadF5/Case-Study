@@ -1,23 +1,41 @@
 const express = require("express");
+const morgan = require("morgan");
+// const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-
-//set up express app
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
 const app = express();
 
-//use bodyParser middleware
+//----------------------------------------------------------------/
+
+//Importing routes
+const adminroutes = require("./routes/adminroutes");
+const carroutes = require("./routes/carroutes");
+const promocoderoutes = require("./routes/promocoderoutes");
+const serviceplanroutes = require("./routes/serviceplanroutes");
+const washerroutes = require("./routes/washerroutes");
+const addonroutes = require("./routes/addonroutes");
+// ----------------------------------------------------------------/
+
+const swaggerUi = require("swagger-ui-express");
+// swaggerDocument = require("./swagger.json");
+swaggerDocument = require("./swaggerfile/carswagger.json");
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+//middlewares
 app.use(bodyParser.json());
-
-//Initialing Routes
-app.use("/", require("./routes/carroutes"));
-app.use("/", require("./routes/serviceplanroutes"));
-app.use("/", require("./routes/washerroutes"));
-app.use("/", require("./routes/promocoderoutes"));
-
-//requiring Model---no need of model ..model need in controller
-
-// require("./models/carmodel");
-// require("./models/serviceplanmodel");
-// require("./models/washermodel");
+app.use(cookieParser());
+app.use(cors());
+app.use(morgan("dev"));
+app.use("/", [
+  adminroutes,
+  carroutes,
+  promocoderoutes,
+  serviceplanroutes,
+  washerroutes,
+  addonroutes,
+]);
+app.use(express.json());
 
 //loading mongo
 const mongoose = require("mongoose");
@@ -35,7 +53,6 @@ mongoose.connect(
   }
 );
 
-//port define
 const port = process.env.port || 5000;
 
 //Listen
@@ -43,3 +60,5 @@ const port = process.env.port || 5000;
 app.listen(port, () => {
   console.log(`Admin server is listening on ${port}`);
 });
+
+module.exports = app;
