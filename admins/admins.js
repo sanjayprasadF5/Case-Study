@@ -1,69 +1,20 @@
 const express = require("express");
+const morgan = require("morgan");
+// const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-// const cookieParser = require("cookie-parser");
-
-//set up express app
-const app = express();
-
-//swagger
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 
-//Initialing Routes
-// const carroutes = require("./routes/carroutes");
-// const serviceplanroutes = require("./routes/serviceplanroutes");
-// const washerroutes = require("./routes/washerroutes");
-// const promocoderoutes = require("./routes/promocoderoutes");
-// const adminroutes = require("./routes/adminroutes");
+//Importing routes
+const adminroutes = require("./routes/adminroutes");
+const carroutes = require("./routes/carroutes");
+const promocoderoutes = require("./routes/promocoderoutes");
+const serviceplanroutes = require("./routes/serviceplanroutes");
+const washerroutes = require("./routes/washerroutes");
 
-//another way
-app.use("/", require("./routes/carroutes"));
-app.use("/", require("./routes/serviceplanroutes"));
-app.use("/", require("./routes/washerroutes"));
-app.use("/", require("./routes/promocoderoutes"));
-app.use("/", require("./routes/adminroutes"));
-
-//use middleware
-app.use(express.json());
-// app.use(cookieParser());
-// app.use("/", [
-//   carroutes,
-//   serviceplanroutes,
-//   washerroutes,
-//   promocoderoutes,
-//   adminroutes,
-// ]);
-//requiring Model---no need of model ..model need in controller
-
-// require("./models/carmodel");
-// require("./models/serviceplanmodel");
-// require("./models/washermodel");
-
-//Swagger config
-
-const swaggerOptions = {
-  swaggerDefinition: {
-    openapi: "3.0.0",
-    info: {
-      version: "1.0.0",
-      title: "Admin API",
-      description: "Admin microservices",
-      contact: {
-        name: "Sanjay Prasad",
-      },
-      server: [
-        {
-          url: "http://localhost:5000/",
-        },
-      ],
-    },
-  },
-  apis: ["./routes/*.js"],
-};
-
-const swaggerDocs = swaggerJsDoc(swaggerOptions);
-
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+const app = express();
 
 //loading mongo
 const mongoose = require("mongoose");
@@ -81,6 +32,41 @@ mongoose.connect(
   }
 );
 
+//middlewares
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(cors());
+app.use(morgan("dev"));
+app.use("/", [
+  adminroutes,
+  carroutes,
+  promocoderoutes,
+  serviceplanroutes,
+  washerroutes,
+]);
+app.use(express.json());
+
+//Swagger
+const options = {
+  definition: {
+    openapi: "3.0.1",
+    info: {
+      title: "Admin API",
+      version: "1.0.0",
+      description: "Admin Microservice",
+    },
+    servers: [
+      {
+        url: "http://localhost:5000",
+      },
+    ],
+  },
+  apis: ["./routes/*.js"],
+};
+
+const specs = swaggerJsDoc(options);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
+
 //port define
 const port = process.env.port || 5000;
 
@@ -89,3 +75,5 @@ const port = process.env.port || 5000;
 app.listen(port, () => {
   console.log(`Admin server is listening on ${port}`);
 });
+
+module.exports = app;
