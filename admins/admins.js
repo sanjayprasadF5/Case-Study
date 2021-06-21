@@ -4,6 +4,10 @@ const bodyParser = require("body-parser");
 //set up express app
 const app = express();
 
+//swagger
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
+
 //use bodyParser middleware
 app.use(bodyParser.json());
 
@@ -19,6 +23,28 @@ app.use("/", require("./routes/adminroutes"));
 // require("./models/carmodel");
 // require("./models/serviceplanmodel");
 // require("./models/washermodel");
+
+//Swagger config
+
+const swaggerOptions = {
+  swaggerDefinition: {
+    openapi: "3.0.0",
+    info: {
+      version: "1.0.0",
+      title: "Admin API",
+      description: "Admin microservices",
+      contact: {
+        name: "Sanjay Prasad",
+      },
+      server: [{ url: "http://localhost:5000" }],
+    },
+  },
+  apis: ["./routes/*.js"],
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 //loading mongo
 const mongoose = require("mongoose");

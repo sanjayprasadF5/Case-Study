@@ -72,7 +72,7 @@ module.exports.postCar = (req, res) => {
 module.exports.getCar = (req, res) => {
   Car.find()
     .then((car) => {
-      res.json(car);
+      res.status(200).json(car);
     })
     .catch((err) => {
       if (err) {

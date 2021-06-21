@@ -7,10 +7,55 @@ const carcontroller = require("../controllers/carcontroller");
 //POST routes to create new car
 router.post("/car", carcontroller.postCar);
 
-//All car
+// /**
+//  * @swagger
+//  * /car:
+//  *      get:
+//  *          summary: Returns all the car.
+//  *          responses:
+//  *              200:
+//  *                  description: The list of the car.
+//  *                  content:
+//  *                      application/json:
+//  *                          schema:
+//  *                              type: array
+//  *                              required: true
+//  *                              properties:
+//  *                                         name:
+//  *                                              type:string
+//  *                                         carBrand:
+//  *                                              type:string
+//  *                                         status:
+//  *                                              type:string
+//  *
+//  */
+
+/**
+ * @openapi
+ * /car:
+ *  get:
+ *    description: Get all cars
+ *    responses:
+ *      '201':
+ *        description: A successful response
+ *      '400' :
+ *        description: Error occured
+ */
+
 router.get("/car", carcontroller.getCar);
 
 //Get car by id
+/**
+ * @openapi
+ * /car/:id :
+ *  get:
+ *    description: Get a specific car by id
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ *      '400' :
+ *        description: Error occured
+ */
 router.get("/car/:id", carcontroller.getCarID);
 
 //update Car

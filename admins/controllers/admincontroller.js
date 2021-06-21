@@ -39,10 +39,12 @@ module.exports.postsignup = (req, res) => {
   admin
     .save()
     .then((admin) => {
-      res.status(200).send(admin);
+      res.status(200).json(admin);
     })
     .catch((err) => {
-      if (err) throw err;
+      // if (err) throw err;
+      const errors = handlerError(err);
+      res.status(400).json(errors);
     });
 };
 
