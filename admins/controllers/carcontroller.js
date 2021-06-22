@@ -67,10 +67,10 @@ module.exports.getCar = (req, res) => {
     })
     .catch((err) => {
       if (err) {
-        res.status(404).send("can't get car");
+        res.status(400).send("can't get car");
       }
     });
-  console.log("We are on getting car by id");
+  console.log("Get all car");
 };
 
 //Get car by ID route handlers ID
@@ -99,7 +99,7 @@ module.exports.updateCar = (req, res) => {
     .catch((err) => {
       // if (err) throw err;
       if (err) {
-        res.status(404).send("can't update erro");
+        res.status(400).send("can't update erro");
       }
     });
 };
@@ -114,7 +114,7 @@ module.exports.deleteCar = (req, res) => {
     .catch((err) => {
       if (err) {
         // console.log("Can't be deleted");
-        res.status(404).send("Can't be deleted'");
+        res.status(400).send("Can't be deleted'");
       }
     });
 };

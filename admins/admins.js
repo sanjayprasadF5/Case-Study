@@ -9,8 +9,18 @@ const app = express();
 //----------------------------------------------------------------/
 const swaggerUi = require("swagger-ui-express");
 // swaggerDocument = require("./swagger.json");
+
+//Car
 swaggerDocument = require("./swaggerfile/carswagger.json");
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use("/api-car", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+//ServicePlan
+swaggerDocument2 = require("./swaggerfile/serviceswagger.json");
+app.use("/api-service", swaggerUi.serve, swaggerUi.setup(swaggerDocument2));
+
+//Add on
+swaggerDocument3 = require("./swaggerfile/addonswagger.json");
+app.use("/api-addon", swaggerUi.serve, swaggerUi.setup(swaggerDocument3));
 
 //----------------------------------------------------------------/
 

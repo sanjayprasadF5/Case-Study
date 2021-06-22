@@ -13,44 +13,44 @@
     "basePath": "/",
     "tags": [
       {
-        "name": "Car",
-        "description": "Car API"
+        "name": "Addon",
+        "description": "Addon API"
       }
     ],
     "paths": {
-        "/car": {
+        "/addon": {
           "get": {
-            "tags": ["Car"],
-            "summary": "Get all users in system",
+            "tags": ["Addon"],
+            "summary": "Get all Addon in system",
             "responses": {
               "200": {
-                "description": "OK",
+                "description": "Get all Addon from the system",
                 "schema": {
-                  "$ref": "#/definitions/Users"
+                  "$ref": "#/definitions/Addon"
                 }
               }
             }
           }
         },
-        "/car/{id}": {
+        "/addon/{id}": {
           "parameters": [
             {
               "name": "id",
               "in": "path",
               "required": true,
-              "description": "ID of user that we want to find",
+              "description": "ID of Addon that we want to find",
               "type": "string"
             }
           ],
             "get": {
               
-              "tags": ["Car"],
-              "summary": "Get all single car in system",
+              "tags": ["Addon"],
+              "summary": "Get single Addon in system",
               "responses": {
                 "200": {
-                  "description": "All car are here",
+                  "description": "All Addon details are here",
                   "schema": {
-                    "$ref": "#/definitions/Users"
+                    "$ref": "#/definitions/Addon"
                   }
                 }
               }
@@ -58,32 +58,32 @@
             "put": {
               "parameters": [
                 {
-                  "name": "user",
+                  "name": "Addon",
                   "in": "body",
-                  "description": "User with new values of properties",
+                  "description": "Addon with new values of properties",
                   "schema": {
-                    "$ref": "#/definitions/updateUser"
+                    "$ref": "#/definitions/updateserviceplan"
                   }
                 }],
-              "tags": ["Car"],
-              "summary": "Get all Update car in system",
+              "tags": ["Addon"],
+              "summary": "Get Addon Update car in system",
               "responses": {
                 "200": {
-                  "description": "Update Car",
+                  "description": "Update Addon Plan",
                   "schema": {
-                    "$ref": "#/definitions/Users"
+                    "$ref": "#/definitions/Addon"
                   }
                 }
               }
             } ,
             "delete": {
-              "summary": "Delete service plan with given ID",
-              "tags": ["Service"],
+              "summary": "Delete Addon plan with given ID",
+              "tags": ["Addon"],
               "responses": {
                 "200": {
-                  "description": "Service plan is deleted",
+                  "description": "Addon plan is deleted",
                   "schema": {
-                    "$ref": "#/definitions/serviceplan"
+                    "$ref": "#/definitions/Addon"
                   }
                 }
               }

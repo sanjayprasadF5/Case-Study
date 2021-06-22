@@ -1,9 +1,25 @@
 const jwt = require("jsonwebtoken");
 
 const adminAuth = (req, res, next) => {
+  /**
+  if(!req.headers.authorization){
+    return res.status(401).send("Unauthorized Request")
+}
+let token = req.headers.authorization.split(' ')[1];
+if(token === 'null'){
+    return res.status(401).send("Unauthorized Request")
+}
+let payload = jwt.verify(token,'Admin is the superuser')
+if(!payload){
+    return res.status(401).send("Unauthorized Request")
+}
+req.userId = payload.id;
+next();
+**/
+
   const token = req.cookies.jwt;
 
-  // check json web token exists & is verified
+  // check json web token exists & is valid
   if (token) {
     jwt.verify(token, "Admin is the Head", (err, decodedToken) => {
       if (err) {
@@ -19,4 +35,4 @@ const adminAuth = (req, res, next) => {
   }
 };
 
-module.exports = { adminAuth };
+module.exports = adminAuth;
