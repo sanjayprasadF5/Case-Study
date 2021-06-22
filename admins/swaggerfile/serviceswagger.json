@@ -6,51 +6,51 @@
       "description": "Admin API Microservice",
       "contact": {
         "name": "Sanjay Prasad",
-        "url": "https://opensource.org/licenses/cg"
+        "url": "https://opensource.org/licenses/MIT"
       }
     },
     "host": "localhost:5000",
     "basePath": "/",
     "tags": [
       {
-        "name": "Car",
-        "description": "Car API"
+        "name": "ServicePlan",
+        "description": "Service API"
       }
     ],
     "paths": {
-        "/car": {
+        "/serviceplan": {
           "get": {
-            "tags": ["Car"],
-            "summary": "Get all users in system",
+            "tags": ["Service"],
+            "summary": "Get all serviceplan in system",
             "responses": {
               "200": {
-                "description": "OK",
+                "description": "Get all serviceplan from the system",
                 "schema": {
-                  "$ref": "#/definitions/Users"
+                  "$ref": "#/definitions/serviceplan"
                 }
               }
             }
           }
         },
-        "/car/{id}": {
+        "/serviceplan/{id}": {
           "parameters": [
             {
               "name": "id",
               "in": "path",
               "required": true,
-              "description": "ID of user that we want to find",
+              "description": "ID of car that we want to find",
               "type": "string"
             }
           ],
             "get": {
               
-              "tags": ["Car"],
-              "summary": "Get all single car in system",
+              "tags": ["Service"],
+              "summary": "Get single service in system",
               "responses": {
                 "200": {
-                  "description": "All car are here",
+                  "description": "All service details are here",
                   "schema": {
-                    "$ref": "#/definitions/Users"
+                    "$ref": "#/definitions/serviceplan"
                   }
                 }
               }
@@ -58,30 +58,30 @@
             "put": {
               "parameters": [
                 {
-                  "name": "user",
+                  "name": "serviceplan",
                   "in": "body",
-                  "description": "User with new values of properties",
+                  "description": "Serviceplan with new values of properties",
                   "schema": {
-                    "$ref": "#/definitions/updateUser"
+                    "$ref": "#/definitions/updateserviceplan"
                   }
                 }],
-              "tags": ["Car"],
-              "summary": "Get all Update car in system",
+              "tags": ["Service"],
+              "summary": "Get service Update car in system",
               "responses": {
                 "200": {
-                  "description": "Update Car",
+                  "description": "Update Service Plan",
                   "schema": {
-                    "$ref": "#/definitions/Users"
+                    "$ref": "#/definitions/serviceplan"
                   }
                 }
               }
             } ,
             "delete": {
-              "summary": "Delete service plan with given ID",
-              "tags": ["Service"],
+              "summary": "Delete Car  with given ID",
+              "tags": ["Car"],
               "responses": {
                 "200": {
-                  "description": "Service plan is deleted",
+                  "description": "Car is deleted",
                   "schema": {
                     "$ref": "#/definitions/serviceplan"
                   }
