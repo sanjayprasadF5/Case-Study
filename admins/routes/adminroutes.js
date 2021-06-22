@@ -10,4 +10,5 @@ router.get("/login", admincontroller.getlogin);
 
 router.post("/login", admincontroller.postlogin);
 
+router.get("/logout", admincontroller.getlogout);
 module.exports = router;

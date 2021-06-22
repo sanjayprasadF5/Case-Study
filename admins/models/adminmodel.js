@@ -26,5 +26,18 @@ adminSchema.pre("save", async function (next) {
   next();
 });
 
+// static method to login user
+adminSchema.statics.login = async function (email, password) {
+  const admin = await this.findOne({ email });
+  if (admin) {
+    const auth = await bcrypt.compare(password, admin.password);
+    if (auth) {
+      return admin;
+    }
+    throw Error("incorrect password");
+  }
+  throw Error("incorrect email");
+};
+
 const Admin = mongoose.model("admin", adminSchema);
 module.exports = Admin;

@@ -7,6 +7,12 @@ const cors = require("cors");
 const app = express();
 
 //----------------------------------------------------------------/
+const swaggerUi = require("swagger-ui-express");
+// swaggerDocument = require("./swagger.json");
+swaggerDocument = require("./swaggerfile/carswagger.json");
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+//----------------------------------------------------------------/
 
 //Importing routes
 const adminroutes = require("./routes/adminroutes");
@@ -16,26 +22,6 @@ const serviceplanroutes = require("./routes/serviceplanroutes");
 const washerroutes = require("./routes/washerroutes");
 const addonroutes = require("./routes/addonroutes");
 // ----------------------------------------------------------------/
-
-const swaggerUi = require("swagger-ui-express");
-// swaggerDocument = require("./swagger.json");
-swaggerDocument = require("./swaggerfile/carswagger.json");
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-//middlewares
-app.use(bodyParser.json());
-app.use(cookieParser());
-app.use(cors());
-app.use(morgan("dev"));
-app.use("/", [
-  adminroutes,
-  carroutes,
-  promocoderoutes,
-  serviceplanroutes,
-  washerroutes,
-  addonroutes,
-]);
-app.use(express.json());
 
 //loading mongo
 const mongoose = require("mongoose");
@@ -52,6 +38,21 @@ mongoose.connect(
     console.log("database connected");
   }
 );
+
+//middlewares
+app.use(express.json());
+app.use(cookieParser());
+app.use(cors());
+app.use(morgan("dev"));
+app.use("/", [
+  adminroutes,
+  carroutes,
+  promocoderoutes,
+  serviceplanroutes,
+  washerroutes,
+  addonroutes,
+]);
+// app.use(express.json());
 
 const port = process.env.port || 5000;
 
