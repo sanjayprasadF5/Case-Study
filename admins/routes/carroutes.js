@@ -2,33 +2,9 @@ const express = require("express");
 
 const router = express.Router();
 const bodyParser = require("body-parser");
-
+// const adminAuth = require("../middlewares/adminmiddleware");
 const carcontroller = require("../controllers/carcontroller");
 //Routes for car
-
-// /**
-//  * @swagger
-//  * /car:
-//  *  get:
-//  *    description: Get all cars
-//  *    responses:
-//  *      '201':
-//  *        description: A successful response
-//  *      '400' :
-//  *        description: Error occured
-//  */
-/**
- * @swagger
- * "/car": {
-    "get": {
-      "tags": ["car"],
-      "summary": "Get all users in system",
-      "responses": {
-        "200": {
-          "description": "OK",
-          "schema": {
-            "$ref": "#/definitions/Users"
- */
 
 router.get("/car", carcontroller.getCar);
 
