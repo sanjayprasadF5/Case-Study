@@ -6,7 +6,7 @@
       "description": "Admin API Microservice",
       "contact": {
         "name": "Sanjay Prasad",
-        "url": "https://opensource.org/licenses/MIT"
+        "url": "https://opensource.org/licenses/cg"
       }
     },
     "host": "localhost:5000",
