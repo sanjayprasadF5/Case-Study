@@ -1,0 +1,99 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0", 
+      "title": "Admin Api",
+      "description": "Admin API Microservice",
+      "contact": {
+        "name": "Sanjay Prasad",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:5000",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Prmocode",
+        "description": "Prmocode API"
+      }
+    ],
+    "paths": {
+        "/promocode": {
+          "get": {
+            "tags": ["Prmocode"],
+            "summary": "Get all Prmocode in system",
+            "responses": {
+              "200": {
+                "description": "Get all Prmocode from the system",
+                "schema": {
+                  "$ref": "#/definitions/Prmocode"
+                }
+              }
+            }
+          }
+        },
+        "/promocode/{id}": {
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID of car that we want to find",
+              "type": "string"
+            }
+          ],
+            "get": {
+              
+              "tags": ["Promocode"],
+              "summary": "Get single service in system",
+              "responses": {
+                "200": {
+                  "description": "All service details are here",
+                  "schema": {
+                    "$ref": "#/definitions/serviceplan"
+                  }
+                }
+              }
+            },
+            "put": {
+              "parameters": [
+                {
+                  "name": "promocode",
+                  "in": "body",
+                  "description": "Promocode with new values of properties",
+                  "schema": {
+                    "$ref": "#/definitions/Updatedpromocode"
+                  }
+                }],
+              "tags": ["Prmocode"],
+              "summary": "Get Promocode Update car in system",
+              "responses": {
+                "200": {
+                  "description": "Update Promocode Plan",
+                  "schema": {
+                    "$ref": "#/definitions/promocode"
+                  }
+                }
+              }
+            } ,
+            "delete": {
+              "summary": "Promocode   with given ID",
+              "tags": ["Promocode"],
+              "responses": {
+                "200": {
+                  "description": "Promocode is deleted",
+                  "schema": {
+                    "$ref": "#/definitions/promocode"
+                  }
+                }
+              }
+            }
+      }
+      
+          
+      }
+      
+      }
+      
+      
+  

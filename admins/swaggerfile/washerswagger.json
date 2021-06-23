@@ -1,0 +1,99 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0", 
+      "title": "Admin Api",
+      "description": "Admin API Microservice",
+      "contact": {
+        "name": "Sanjay Prasad",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:5000",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Washer",
+        "description": "Washer API"
+      }
+    ],
+    "paths": {
+        "/washer": {
+          "get": {
+            "tags": ["Washer"],
+            "summary": "Get all Washer in system",
+            "responses": {
+              "200": {
+                "description": "Get all Washer from the system",
+                "schema": {
+                  "$ref": "#/definitions/Washer"
+                }
+              }
+            }
+          }
+        },
+        "/washer/{id}": {
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID of car that we want to find",
+              "type": "string"
+            }
+          ],
+            "get": {
+              
+              "tags": ["Washer"],
+              "summary": "Get single Washer in system",
+              "responses": {
+                "200": {
+                  "description": "All service details are here",
+                  "schema": {
+                    "$ref": "#/definitions/Washer"
+                  }
+                }
+              }
+            },
+            "put": {
+              "parameters": [
+                {
+                  "name": "Washer",
+                  "in": "body",
+                  "description": "Washer with new values of properties",
+                  "schema": {
+                    "$ref": "#/definitions/Washer"
+                  }
+                }],
+              "tags": ["Washer"],
+              "summary": "Get Promocode Update car in system",
+              "responses": {
+                "200": {
+                  "description": "Update Washer Plan",
+                  "schema": {
+                    "$ref": "#/definitions/Washer"
+                  }
+                }
+              }
+            } ,
+            "delete": {
+              "summary": "Washer   with given ID",
+              "tags": ["Washer"],
+              "responses": {
+                "200": {
+                  "description": "Washer is deleted",
+                  "schema": {
+                    "$ref": "#/definitions/Washer"
+                  }
+                }
+              }
+            }
+      }
+      
+          
+      }
+      
+      }
+      
+      
+  

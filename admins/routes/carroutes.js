@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 const bodyParser = require("body-parser");
-// const adminAuth = require("../middlewares/adminmiddleware");
+const adminAuth = require("../middlewares/adminmiddleware");
 const carcontroller = require("../controllers/carcontroller");
 //Routes for car
 

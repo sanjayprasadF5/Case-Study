@@ -64,7 +64,9 @@ module.exports.getserviceplan = (req, res) => {
       res.json(serviceplan);
     })
     .catch((err) => {
-      if (err) throw err;
+      if (err) {
+        res.sendStatus(400);
+      }
     });
   console.log("this is service plan");
 };
@@ -77,7 +79,9 @@ module.exports.getserviceplanID = (req, res) => {
       res.json(serviceplan);
     })
     .catch((err) => {
-      if (err) throw err;
+      if (err) {
+        res.sendStatus(400);
+      }
     });
 };
 
@@ -91,13 +95,21 @@ module.exports.updateserviceplan = (req, res) => {
       });
     })
     .catch((err) => {
-      if (err) throw err;
+      if (err) {
+        res.sendStatus(400);
+      }
     });
 };
 
 //delete service ServicePlan
 module.exports.deleteserviceplan = (req, res) => {
-  ServicePlan.findByIdAndRemove({ _id: req.params.id }).then((serviceplan) => {
-    res.send(serviceplan);
-  });
+  ServicePlan.findByIdAndRemove({ _id: req.params.id })
+    .then((serviceplan) => {
+      res.send(serviceplan);
+    })
+    .catch((err) => {
+      if (err) {
+        res.sendStatus(400);
+      }
+    });
 };

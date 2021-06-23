@@ -31,7 +31,7 @@ module.exports.postaddon = (req, res) => {
   Addon.create(newaddon, (err, result) => {
     if (err) {
       const error = handleErrors(err);
-      res.status(400).json(error);
+      res.sendStatus(400);
     } else {
       res.status(200).json(result);
     }
@@ -44,7 +44,7 @@ module.exports.getaddon = (req, res) => {
     if (err) {
       res.status(400).json(err);
     } else {
-      res.status(201).send(docs);
+      res.status(200).send(docs);
     }
   });
 };
@@ -57,7 +57,7 @@ module.exports.getidaddon = (req, res) => {
       console.log(err);
       res.status(400).json(err);
     } else {
-      res.status(201).send(doc);
+      res.status(200).send(doc);
     }
   });
 };
@@ -71,7 +71,7 @@ module.exports.putaddon = function (req, res) {
       console.log(err);
       res.status(400).json(err);
     } else {
-      res.status(201).json(doc);
+      res.status(200).json(doc);
     }
   });
 };
@@ -85,7 +85,7 @@ module.exports.deleteaddon = function (req, res) {
       console.log(err);
       res.status(400).json(err);
     } else {
-      res.status(201).json(doc);
+      res.status(200).send(doc);
     }
   });
 };
