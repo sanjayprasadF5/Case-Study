@@ -58,10 +58,12 @@ module.exports.postpromocode = (req, res) => {
 module.exports.getpromocode = (req, res) => {
   PromoCode.find()
     .then((promocode) => {
-      res.json(promocode);
+      res.sendStatus(200).send(promocode);
     })
     .catch((err) => {
-      if (err) throw err;
+      if (err) {
+        res.sendStatus(400);
+      }
     });
   console.log("We are getting the promocode");
 };
@@ -71,10 +73,12 @@ module.exports.getpromocode = (req, res) => {
 module.exports.getpromocodeId = (req, res) => {
   PromoCode.findById(req.params.id)
     .then((promocode) => {
-      res.json(promocode);
+      res.sendStatus(200).send(promocode);
     })
     .catch((err) => {
-      if (err) throw err;
+      if (err) {
+        res.sendStatus(400);
+      }
     });
   console.log("We are on promocode by id");
 };
@@ -84,17 +88,25 @@ module.exports.updatepromocode = (req, res) => {
   PromoCode.findByIdAndUpdate({ _id: req.params.id }, req.body)
     .then(() => {
       PromoCode.findOne({ _id: req.params.id }).then((promocode) => {
-        res.send(promocode);
+        res.sendStatus(200).send(promocode);
       });
     })
     .catch((err) => {
-      if (err) throw err;
+      if (err) {
+        res.sendStatus(400);
+      }
     });
 };
 
 //delete promocode
 module.exports.deletepromocode = (req, res) => {
-  PromoCode.findByIdAndRemove({ _id: req.params.id }).then((promocode) => {
-    res.json(promocode);
-  });
+  PromoCode.findByIdAndRemove({ _id: req.params.id })
+    .then((promocode) => {
+      res.sendStatus(200).send(promocode);
+    })
+    .catch((err) => {
+      if (err) {
+        res.sendStatus(400);
+      }
+    });
 };

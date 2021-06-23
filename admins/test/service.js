@@ -15,15 +15,14 @@ describe("Task Apis", () => {
    *
    */
 
-  describe("GET /car", () => {
+  describe("GET /serviceplan", () => {
     it("it should get all task done", (done) => {
       chai
         .request(server)
-        .get("/car")
+        .get("/serviceplan")
         .end((err, res) => {
           res.should.have.status(200);
           res.should.have.be.a("object");
-          res.body.length.should.be.eq(15);
           done();
         });
     });
@@ -39,13 +38,13 @@ describe("Task Apis", () => {
     });
   });
 
-  describe("GET /car/:id", () => {
+  describe("GET /serviceplan/:id", () => {
     it("it should get by id", (done) => {
-      const taskId = "60cb0f88ba904a1cb89685f2";
+      const taskId = "60cf4356609cbc0bb80f2453";
 
       chai
         .request(server)
-        .get("/car" + taskId)
+        .get("/serviceplan" + taskId)
         .end((err, response) => {
           response.body.should.be.a("object");
           done();
@@ -57,7 +56,7 @@ describe("Task Apis", () => {
 
       chai
         .request(server)
-        .get("/car" + taskId)
+        .get("/serviceplan" + taskId)
         .end((err, response) => {
           response.should.have.status(404);
           done();
@@ -65,18 +64,20 @@ describe("Task Apis", () => {
     });
   });
 
-  describe("POST /car", () => {
+  describe("POST /serviceplan", () => {
     {
       it("it should post", (done) => {
         const task = {
-          name: "Task",
-          carBrand: "DSF",
+          name: "fullTask",
+          time: "28 hr",
+          cost: 4000,
+          description: "adadabaud",
           status: "active",
         };
 
         chai
           .request(server)
-          .post("/car")
+          .post("/serviceplan")
           .send("task")
           .end((err, response) => {
             response.body.should.be.a("object");
@@ -86,18 +87,20 @@ describe("Task Apis", () => {
     }
   });
 
-  describe("PUT /car", () => {
+  describe("PUT /serviceplan", () => {
     {
       it("it should put", (done) => {
         const task = {
-          name: "Task",
-          carBrand: "DSF",
+          name: "fullTask",
+          time: "28 hr",
+          cost: 4000,
+          description: "adadabaud",
           status: "active",
         };
 
         chai
           .request(server)
-          .put("/car")
+          .put("/serviceplan")
           .send("task")
           .end((err, response) => {
             response.body.should.be.a("object");
@@ -107,13 +110,13 @@ describe("Task Apis", () => {
     }
   });
 
-  describe("DELETE /car/:id", () => {
+  describe("DELETE /serviceplan/:id", () => {
     {
       it("it should delete", (done) => {
-        const task = "60cf0c5f39447434289dcb27";
+        const task = "60cf4a2148e10e1d2c7b3920";
         chai
           .request(server)
-          .delete("/car/:id" + task)
+          .delete("/serviceplan/:id" + task)
           .send("task")
           .end((err, response) => {
             response.body.should.be.a("object");

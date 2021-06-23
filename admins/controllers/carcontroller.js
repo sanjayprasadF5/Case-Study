@@ -67,7 +67,7 @@ module.exports.getCar = (req, res) => {
     })
     .catch((err) => {
       if (err) {
-        res.status(400).send("can't get car");
+        res.sendStatus(400);
       }
     });
   console.log("Get all car");
@@ -82,7 +82,7 @@ module.exports.getCarID = (req, res) => {
     })
     .catch((err) => {
       if (err) {
-        res.status(400).send("Can't find car'");
+        res.sendStatus(400);
       }
     });
 };
@@ -109,12 +109,12 @@ module.exports.updateCar = (req, res) => {
 module.exports.deleteCar = (req, res) => {
   Car.findByIdAndRemove({ _id: req.params.id })
     .then((car) => {
-      res.status(200).send(car);
+      res.status(200);
     })
     .catch((err) => {
       if (err) {
         // console.log("Can't be deleted");
-        res.status(400).send("Can't be deleted'");
+        res.sendStatus(400);
       }
     });
 };
