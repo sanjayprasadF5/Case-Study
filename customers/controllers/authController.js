@@ -30,9 +30,9 @@ const handleErrors = (err) => {
 };
 
 //Creating JWT Token
-const maxAge = 2 * 24 * 60 * 60; //token will expire in 2 days
+const maxAge = 2 * 24 * 60 * 60;
 const createToken = (id) => {
-  return jwt.sign({ id }, "A strong secret token", {
+  return jwt.sign({ id }, "Customer Is Boss", {
     expiresIn: maxAge,
   });
 };
@@ -40,7 +40,7 @@ const createToken = (id) => {
 //Sign up
 module.exports.get_signup = function (req, res) {
   //redirect to sigup page from angular
-  res.send("hi this is signnup page");
+  res.send("hi  is signnup page");
 };
 
 module.exports.post_signup = async function (req, res) {
@@ -49,7 +49,7 @@ module.exports.post_signup = async function (req, res) {
     const user = await User.create({ email, password });
     const token = createToken(user._id);
     //res.cookie('jwt',token, {httpOnly: true, maxAge : maxAge*1000});
-    res.status(201).send({ token });
+    res.status(201).send(token);
   } catch (error) {
     const err = handleErrors(error);
     res.status(400).json(err);
@@ -68,7 +68,7 @@ module.exports.post_login = async function (req, res) {
     const user = await User.login(email, password);
     const token = createToken(user._id);
     //res.cookie('jwt',token, {httpOnly: true, maxAge : maxAge*1000});
-    res.status(201).send({ token });
+    res.status(201).send(token);
   } catch (error) {
     const err = handleErrors(error);
     res.status(400).json(err);

@@ -48,11 +48,10 @@ app.use("/", [
   washerRoute,
 ]);
 
-//Listen to port: Default is 3000
 const port = process.env.PORT || 3000;
 
 app.listen(port, function () {
-  console.log("listening to port ", port);
+  console.log(`Customer Server is running ${port}`);
 });
 
 module.exports = app;

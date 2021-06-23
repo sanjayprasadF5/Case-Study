@@ -2,31 +2,31 @@ const mongoose = require("mongoose");
 const { isMobilePhone } = require("validator");
 
 const profileSchema = new mongoose.Schema({
-  userId: {
-    type: String,
-    unique: true,
-    required: [true, "please enter customerId"],
-  },
+  // userId: {
+  //   type: "String",
+  //   // unique: true,
+  //   required: [true, "please enter customerId"],
+  // },
   name: {
-    type: String,
+    type: "String",
     lowercase: true,
     unique: true,
     required: [true, "Please enter a name"],
   },
   mobile: {
-    type: String,
+    type: "String",
     required: [true, "Please enter mobile number"],
     unique: true,
     validate: [isMobilePhone, "en-IN", "Enter a valid mobile number"],
   },
   car: {
     carName: {
-      type: String,
+      type: "String",
       required: [true, "Enter a car name"],
       lowercase: true,
     },
-    carModel: {
-      type: String,
+    carModelNo: {
+      type: "String",
       required: [true, "Enter the model of the car"],
     },
   },
@@ -37,17 +37,17 @@ const profileSchema = new mongoose.Schema({
   },
   addresses: {
     country: {
-      type: String,
+      type: "String",
       lowercase: true,
       required: [true, "Please enter the country name"],
     },
     city: {
-      type: String,
+      type: "String",
       lowercase: true,
       required: [true, "Please enter the city name"],
     },
     address: {
-      type: String,
+      type: "String",
       lowercase: true,
       required: [true, "Please enter the address"],
     },
