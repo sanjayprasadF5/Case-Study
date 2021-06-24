@@ -61,11 +61,11 @@ module.exports.postserviceplan = (req, res) => {
 module.exports.getserviceplan = (req, res) => {
   ServicePlan.find()
     .then((serviceplan) => {
-      res.json(serviceplan);
+      res.status(200).json(serviceplan);
     })
     .catch((err) => {
       if (err) {
-        res.sendStatus(400);
+        res.status(400).json(err);
       }
     });
   console.log("this is service plan");
@@ -80,7 +80,7 @@ module.exports.getserviceplanID = (req, res) => {
     })
     .catch((err) => {
       if (err) {
-        res.sendStatus(400);
+        res.status(400).json(err);
       }
     });
 };
@@ -96,7 +96,7 @@ module.exports.updateserviceplan = (req, res) => {
     })
     .catch((err) => {
       if (err) {
-        res.sendStatus(400);
+        res.status(400).json(err);
       }
     });
 };
@@ -109,7 +109,7 @@ module.exports.deleteserviceplan = (req, res) => {
     })
     .catch((err) => {
       if (err) {
-        res.sendStatus(400);
+        res.status(400).json(err);
       }
     });
 };

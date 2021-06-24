@@ -16,7 +16,7 @@ const handleErrors = (err) => {
   }
 
   if (err.message.includes("Addon validation failed")) {
-    Object.values(err.errors).forEach(({ properties }) => {
+    Object.values(err.error).forEach(({ properties }) => {
       error[properties.path] = properties.message;
     });
   }
@@ -31,7 +31,7 @@ module.exports.postaddon = (req, res) => {
   Addon.create(newaddon, (err, result) => {
     if (err) {
       const error = handleErrors(err);
-      res.sendStatus(400);
+      res.status(400).send(error);
     } else {
       res.status(200).json(result);
     }

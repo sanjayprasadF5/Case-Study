@@ -9,7 +9,7 @@ module.exports.getallwasher = (req, res) => {
     })
     .catch((err) => {
       if (err) {
-        res.sendStatus(400);
+        res.status(400).json(err);
       }
     });
 };
@@ -23,7 +23,7 @@ module.exports.getwasherID = (req, res) => {
     })
     .catch((err) => {
       if (err) {
-        res.sendStatus(400);
+        res.status(400).json(err);
       }
     });
 };
@@ -37,7 +37,7 @@ module.exports.deletewasher = (req, res) => {
     })
     .catch((err) => {
       if (err) {
-        res.sendStatus(400);
+        res.status(400).json(err);
       }
     });
 };
@@ -50,7 +50,7 @@ module.exports.updatewasher = (req, res) => {
     })
     .catch((err) => {
       if (err) {
-        res.sendStatus(400);
+        res.status(400).json(err);
       }
     });
 };
