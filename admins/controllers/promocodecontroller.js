@@ -58,7 +58,7 @@ module.exports.postpromocode = (req, res) => {
 module.exports.getpromocode = (req, res) => {
   PromoCode.find()
     .then((promocode) => {
-      res.sendStatus(200).send(promocode);
+      res.status(200).json(promocode);
     })
     .catch((err) => {
       if (err) {
@@ -73,7 +73,7 @@ module.exports.getpromocode = (req, res) => {
 module.exports.getpromocodeId = (req, res) => {
   PromoCode.findById(req.params.id)
     .then((promocode) => {
-      res.sendStatus(200).send(promocode);
+      res.sendStatus(200).json(promocode);
     })
     .catch((err) => {
       if (err) {

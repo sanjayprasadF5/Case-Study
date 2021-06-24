@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-module.exports = mongoose.model("Washer", {
+const washerSchema = mongoose.Schema({
   name: {
     type: "string",
     require: true,
@@ -21,3 +21,6 @@ module.exports = mongoose.model("Washer", {
     default: false,
   },
 });
+
+const Washer = mongoose.model("Washer", washerSchema);
+module.exports = Washer;

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-module.exports = mongoose.model("Addon", {
+const addonSchema = new mongoose.Schema({
   name: {
     type: "string",
     lowercase: true,
@@ -26,3 +26,7 @@ module.exports = mongoose.model("Addon", {
     lowercase: true,
   },
 });
+
+const Addon = mongoose.model("addon", addonSchema);
+
+module.exports = Addon;

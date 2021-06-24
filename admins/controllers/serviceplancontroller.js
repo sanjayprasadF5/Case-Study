@@ -45,7 +45,7 @@ module.exports.postserviceplan = (req, res) => {
 
   serviceplan
     .save()
-    .then(() => {
+    .then((serviceplan) => {
       console.log("Service plan saved");
       res.status(200).send(serviceplan);
     })

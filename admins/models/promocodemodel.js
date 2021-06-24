@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-module.exports = mongoose.model("PromoCode", {
+const promoSchema = new mongoose.Schema({
   name: {
     type: "string",
     minlength: [5, "Minimum 5 character"],
@@ -32,3 +32,6 @@ module.exports = mongoose.model("PromoCode", {
     default: "active",
   },
 });
+
+const PromoCode = mongoose.model("promocode", promoSchema);
+module.exports = PromoCode;
