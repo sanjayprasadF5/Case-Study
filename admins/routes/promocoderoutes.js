@@ -1,6 +1,7 @@
 const express = require("express");
-const promocodecontroller = require("../controllers/promocodecontroller");
 const router = express.Router();
+const bodyParser = require("body-parser");
+const promocodecontroller = require("../controllers/promocodecontroller");
 
 //Create promo code
 router.post("/promocode", promocodecontroller.postpromocode);

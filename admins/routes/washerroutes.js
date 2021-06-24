@@ -17,6 +17,8 @@ router.put("/washer/:id", washercontroller.updatewasher);
 router.delete("/washer/:id", washercontroller.deletewasher);
 
 //post routes routes
-router.post("/washer", washercontroller.postwasher);
+// router.post("/washer", washercontroller.postwasher);
 
+//get count routes
+router.get("/washercount", washercontroller.countwasher);
 module.exports = router;

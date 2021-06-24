@@ -24,6 +24,7 @@ const addonSchema = new mongoose.Schema({
     type: "String",
     enum: ["active", "inactive"],
     lowercase: true,
+    default: "active",
   },
 });
 

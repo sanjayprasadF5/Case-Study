@@ -27,7 +27,7 @@ const handlerError = (err) => {
 
   //validate errors
   if (err.message.includes("Admin validation failed")) {
-    Object.values(err.error).forEach(({ properties }) => {
+    Object.values(err.errors).forEach(({ properties }) => {
       error[properties.path] = properties.message;
     });
   }
@@ -60,6 +60,7 @@ module.exports.postsignup = async (req, res) => {
   } catch (err) {
     const error = handlerError(err);
     res.status(400).json(error);
+    console.log(error);
   }
 };
 
@@ -87,5 +88,6 @@ module.exports.postlogin = async function (req, res) {
 
 module.exports.getlogout = (req, res) => {
   res.cookie("jwt", "", { maxAge: 1 });
-  res.redirect("/");
+  // res.redirect("/");
+  res.send("logged out");
 };

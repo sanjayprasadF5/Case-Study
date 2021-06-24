@@ -12,7 +12,7 @@ const handleErrors = (err) => {
 
   //duplicate service plan name
   if (err.code === 11000) {
-    error.name = "Entered car model is already present";
+    error.carBrand = "Entered car barnd is already present";
     return error;
   }
 

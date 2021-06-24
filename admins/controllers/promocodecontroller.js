@@ -62,7 +62,7 @@ module.exports.getpromocode = (req, res) => {
     })
     .catch((err) => {
       if (err) {
-        res.sendStatus(400);
+        res.sendStatus(400).send(err);
       }
     });
   console.log("We are getting the promocode");
@@ -77,7 +77,7 @@ module.exports.getpromocodeId = (req, res) => {
     })
     .catch((err) => {
       if (err) {
-        res.sendStatus(400);
+        res.sendStatus(400).send(err);
       }
     });
   console.log("We are on promocode by id");
@@ -93,7 +93,7 @@ module.exports.updatepromocode = (req, res) => {
     })
     .catch((err) => {
       if (err) {
-        res.sendStatus(400);
+        res.sendStatus(400).send(err);
       }
     });
 };
@@ -102,11 +102,11 @@ module.exports.updatepromocode = (req, res) => {
 module.exports.deletepromocode = (req, res) => {
   PromoCode.findByIdAndRemove({ _id: req.params.id })
     .then((promocode) => {
-      res.sendStatus(200).send(promocode);
+      res.sendStatus(200).send(promocode + "Document deleted");
     })
     .catch((err) => {
       if (err) {
-        res.sendStatus(400);
+        res.sendStatus(400).send(err);
       }
     });
 };
