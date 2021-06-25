@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const ServicePlan = require("../models/serviceplanmodel");
+const bodyParser = require("body-parser");
+// const adminAuth = require("../middlewares/adminmiddleware");
 const serviceplancontroller = require("../controllers/serviceplancontroller");
 //Routes for Service plan
 

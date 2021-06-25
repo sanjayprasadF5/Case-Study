@@ -26,7 +26,7 @@ app.use("/api-addon", swaggerUi.serve, swaggerUi.setup(swaggerDocument3));
 swaggerDocument4 = require("./swaggerfile/promoswagger.json");
 app.use("/api-promocode", swaggerUi.serve, swaggerUi.setup(swaggerDocument4));
 
-//Washer
+// Washer
 // swaggerDocument5 = require("./swaggerfile/washerswagger.json");
 // app.use("/api-washer", swaggerUi.serve, swaggerUi.setup(swaggerDocument5));
 
@@ -53,7 +53,7 @@ mongoose.connect(
     useCreateIndex: true,
   },
   () => {
-    console.log("database connected");
+    console.log("Database connected for admin (admindb)");
   }
 );
 

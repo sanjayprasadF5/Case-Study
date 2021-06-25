@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-module.exports = mongoose.model("Car", {
+const carSchema = new mongoose.Schema({
   name: {
     type: "string",
     require: [true, "Please enter an name"],
@@ -22,3 +22,6 @@ module.exports = mongoose.model("Car", {
     default: "active",
   },
 });
+
+const Car = mongoose.model("Car", carSchema);
+module.exports = Car;

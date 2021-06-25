@@ -30,6 +30,29 @@
                 }
               }
             }
+          },
+          "post": {
+            "tags": ["Addon"],
+            "description": "Create Addon  in system",
+            "parameters": [
+              {
+                "name": "Addon",
+                "in": "body",
+                "description": "Addon that we want to create",
+                "schema": {
+                  "$ref": "#/definitions/Addon"
+                }
+              }
+            ],
+            "produces": ["application/json"],
+            "responses": {
+              "200": {
+                "description": "New Addon is created",
+                "schema": {
+                  "$ref": "#/definitions/Addon"
+                }
+              }
+            }
           }
         },
         "/addon/{id}": {

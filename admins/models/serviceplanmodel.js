@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-module.exports = mongoose.model("ServicePlan", {
+const serviceSchema = mongoose.Schema({
   name: {
     type: "string",
     lowercase: true,
@@ -31,3 +31,6 @@ module.exports = mongoose.model("ServicePlan", {
     default: "active",
   },
 });
+
+const ServicePlan = mongoose.model("serviceplan", serviceSchema);
+module.exports = ServicePlan;

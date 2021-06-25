@@ -12,7 +12,7 @@ const handleErrors = (err) => {
 
   //duplicate service plan name
   if (err.code === 11000) {
-    error.name = "Entered car model is already present";
+    error.carBrand = "Entered car barnd is already present";
     return error;
   }
 
@@ -78,7 +78,7 @@ module.exports.getCar = (req, res) => {
 module.exports.getCarID = (req, res) => {
   Car.findById(req.params.id)
     .then((car) => {
-      res.status(200).json(car);
+      res.sendstatus(200).json(car);
     })
     .catch((err) => {
       if (err) {
@@ -93,13 +93,13 @@ module.exports.updateCar = (req, res) => {
   Car.findByIdAndUpdate({ _id: req.params.id }, req.body)
     .then(function () {
       Car.findOne({ _id: req.params.id }).then(function (car) {
-        res.status(200).send(car);
+        res.sendStatus(200).send(car);
       });
     })
     .catch((err) => {
       // if (err) throw err;
       if (err) {
-        res.status(400).send("can't update erro");
+        res.sendStatus(400).send("can't update erro");
       }
     });
 };
@@ -109,7 +109,7 @@ module.exports.updateCar = (req, res) => {
 module.exports.deleteCar = (req, res) => {
   Car.findByIdAndRemove({ _id: req.params.id })
     .then((car) => {
-      res.status(200);
+      res.sendStatus(200).send(car);
     })
     .catch((err) => {
       if (err) {

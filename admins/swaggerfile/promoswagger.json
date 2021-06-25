@@ -20,7 +20,7 @@
     "paths": {
         "/promocode": {
           "get": {
-            "tags": ["Prmocode"],
+            "tags": ["Promocode"],
             "summary": "Get all Prmocode in system",
             "responses": {
               "200": {
@@ -32,28 +32,29 @@
             }
           },
           "post": {
-            "tags": ["PromoCode"],
-            "description": "Create new promocode in system",
+            "tags": ["Promocode"],
+            "description": "Create Promocode  in system",
             "parameters": [
               {
-                "name": "promocode",
+                "name": "Promocode",
                 "in": "body",
-                "description": "User that we want to create",
+                "description": "Promocode that we want to create",
                 "schema": {
-                  "$ref": "#/definitions/promocode"
+                  "$ref": "#/definitions/Car"
                 }
               }
             ],
             "produces": ["application/json"],
             "responses": {
               "200": {
-                "description": "New promocode is created",
+                "description": "New Promocode is created",
                 "schema": {
-                  "$ref": "#/definitions/promocode"
+                  "$ref": "#/definitions/Promocode"
                 }
               }
             }
           }
+          
         },
         "/promocode/{id}": {
           "parameters": [
