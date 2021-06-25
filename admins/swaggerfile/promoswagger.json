@@ -30,6 +30,29 @@
                 }
               }
             }
+          },
+          "post": {
+            "tags": ["PromoCode"],
+            "description": "Create new promocode in system",
+            "parameters": [
+              {
+                "name": "promocode",
+                "in": "body",
+                "description": "User that we want to create",
+                "schema": {
+                  "$ref": "#/definitions/promocode"
+                }
+              }
+            ],
+            "produces": ["application/json"],
+            "responses": {
+              "200": {
+                "description": "New promocode is created",
+                "schema": {
+                  "$ref": "#/definitions/promocode"
+                }
+              }
+            }
           }
         },
         "/promocode/{id}": {
@@ -43,7 +66,6 @@
             }
           ],
             "get": {
-              
               "tags": ["Promocode"],
               "summary": "Get single service in system",
               "responses": {

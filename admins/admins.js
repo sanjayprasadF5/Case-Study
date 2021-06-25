@@ -27,8 +27,8 @@ swaggerDocument4 = require("./swaggerfile/promoswagger.json");
 app.use("/api-promocode", swaggerUi.serve, swaggerUi.setup(swaggerDocument4));
 
 //Washer
-swaggerDocument5 = require("./swaggerfile/washerswagger.json");
-app.use("/api-washer", swaggerUi.serve, swaggerUi.setup(swaggerDocument5));
+// swaggerDocument5 = require("./swaggerfile/washerswagger.json");
+// app.use("/api-washer", swaggerUi.serve, swaggerUi.setup(swaggerDocument5));
 
 //----------------------------------------------------------------/
 
