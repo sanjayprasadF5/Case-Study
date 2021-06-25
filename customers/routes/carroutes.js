@@ -1,8 +1,8 @@
-// const carController = require("../controllers/carController");
+const carController = require("../controllers/carController");
+const requireAuth = require("../middlewares/authMiddleware");
+const express = require("express");
+const router = express.Router();
 
-// const express = require("express");
-// const router = express.Router();
+router.get("/car", carController.get_cars);
 
-// // router.get("/car", requireAuth, carController.get_cars);
-
-// module.exports = router;
+module.exports = router;
