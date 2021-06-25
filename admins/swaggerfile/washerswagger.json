@@ -30,7 +30,31 @@
                 }
               }
             }
+          },
+          "post": {
+            "tags": ["Washer"],
+            "description": "Create Washer  in system",
+            "parameters": [
+              {
+                "name": "Washer",
+                "in": "body",
+                "description": "Washer that we want to create",
+                "schema": {
+                  "$ref": "#/definitions/ServicePlan"
+                }
+              }
+            ],
+            "produces": ["application/json"],
+            "responses": {
+              "200": {
+                "description": "New ServicePlan is created",
+                "schema": {
+                  "$ref": "#/definitions/ServicePlan"
+                }
+              }
+            }
           }
+          
         },
         "/washer/{id}": {
           "parameters": [
