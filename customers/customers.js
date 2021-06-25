@@ -3,16 +3,16 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
-
+const axios = require("axios");
 //routes
 const authRoutes = require("./routes/authRoutes");
-const orderRoutes = require("./routes/carRoutes");
+// const orderRoutes = require("./routes/carRoutes");
 const carRoutes = require("./routes/carRoutes");
 const profileRoutes = require("./routes/profileRoutes");
-const myordersRoutes = require("./routes/myorderRoutes");
-const scheduledLater = require("./routes/scheduleLaterRoutes");
-const leaderboard = require("./routes/leaderboardRoutes");
-const washerRoute = require("./routes/findwasherRoutes");
+// const myordersRoutes = require("./routes/myorderRoutes");
+// const scheduledLater = require("./routes/scheduleLaterRoutes");
+// const leaderboard = require("./routes/leaderboardRoutes");
+// const washerRoute = require("./routes/findwasherRoutes");
 // const serviceAddonPromocode = require("./routes/service_addon_promocode");
 
 const app = express();
@@ -35,17 +35,17 @@ mongoose.connect(
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
-app.use("/uploads/images", express.static("uploads"));
+// app.use("/uploads/images", express.static("uploads"));
 app.use("/", [
   authRoutes,
   profileRoutes,
-  orderRoutes,
+  // orderRoutes,
   carRoutes,
 
-  myordersRoutes,
-  scheduledLater,
-  leaderboard,
-  washerRoute,
+  // myordersRoutes,
+  // scheduledLater,
+  // leaderboard,
+  // washerRoute,
 ]);
 
 const port = process.env.PORT || 3000;
