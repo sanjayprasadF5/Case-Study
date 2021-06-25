@@ -28,7 +28,7 @@ mongoose.connect(
     useCreateIndex: true,
   },
   () => {
-    console.log("database connected");
+    console.log("Database connected for customer (customerdb)");
   }
 );
 //middleware
