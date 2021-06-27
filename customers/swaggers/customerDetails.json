@@ -1,0 +1,122 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0", 
+      "title": "Cusotmer Api",
+      "description": "Customer API Microservice",
+      "contact": {
+        "name": "Sanjay Prasad",
+        "url": "https://opensource.org/licenses/cg"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "customerDetails",
+        "description": "customerDetails API"
+      }
+    ],
+    "paths": {
+        "/customer": {
+          "get": {
+            "tags": ["customerDetails"],
+            "summary": "Get all customer in system",
+            "responses": {
+              "200": {
+                "description": "customer",
+                "schema": {
+                  "$ref": "#/definitions/customer"
+                }
+              }
+            }
+          },
+          "post": {
+            "tags": ["customer"],
+            "description": "Create customer  in system",
+            "parameters": [
+              {
+                "name": "customer",
+                "in": "body",
+                "description": "customer that we want to create",
+                "schema": {
+                  "$ref": "#/definitions/customer"
+                }
+              }
+            ],
+            "produces": ["application/json"],
+            "responses": {
+              "200": {
+                "description": "New customer is created",
+                "schema": {
+                  "$ref": "#/definitions/Car"
+                }
+              }
+            }
+          }
+        },
+        "/customer/{id}": {
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID of customer that we want to find",
+              "type": "string"
+            }
+          ],
+            "get": {
+              
+              "tags": ["customer"],
+              "summary": "Get all single customer in system",
+              "responses": {
+                "200": {
+                  "description": "All customer are here",
+                  "schema": {
+                    "$ref": "#/definitions/customer"
+                  }
+                }
+              }
+            },
+            "put": {
+              "parameters": [
+                {
+                  "name": "customer",
+                  "in": "body",
+                  "description": "customer with new values of properties",
+                  "schema": {
+                    "$ref": "#/definitions/customer"
+                  }
+                }],
+              "tags": ["customer"],
+              "summary": "Get all Update customer in system",
+              "responses": {
+                "200": {
+                  "description": "Update customer",
+                  "schema": {
+                    "$ref": "#/definitions/customer"
+                  }
+                }
+              }
+            } ,
+            "delete": {
+              "summary": "Delete customer  with given ID",
+              "tags": ["customer"],
+              "responses": {
+                "200": {
+                  "description": "customer is deleted",
+                  "schema": {
+                    "$ref": "#/definitions/customer"
+                  }
+                }
+              }
+            }
+      }
+      
+          
+      }
+      
+      }
+      
+      
+  

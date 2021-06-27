@@ -37,8 +37,10 @@ const adminroutes = require("./routes/adminroutes");
 const carroutes = require("./routes/carroutes");
 const promocoderoutes = require("./routes/promocoderoutes");
 const serviceplanroutes = require("./routes/serviceplanroutes");
-const washerroutes = require("./routes/washerroutes");
+// const washerroutes = require("./routes/washerroutes");
 const addonroutes = require("./routes/addonroutes");
+const customerRoutes = require("./routes/customerroutes");
+const leaderboard = require("./routes/leaderboardroutes");
 // ----------------------------------------------------------------/
 
 //loading mongo
@@ -67,7 +69,9 @@ app.use("/", [
   carroutes,
   promocoderoutes,
   serviceplanroutes,
-  washerroutes,
+  customerRoutes,
+  leaderboard,
+  // washerroutes,
   addonroutes,
 ]);
 // app.use(express.json());

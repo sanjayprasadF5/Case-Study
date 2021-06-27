@@ -73,7 +73,7 @@ module.exports.getpromocode = (req, res) => {
 module.exports.getpromocodeId = (req, res) => {
   PromoCode.findById(req.params.id)
     .then((promocode) => {
-      res.sendStatus(200).json(promocode);
+      res.json(promocode);
     })
     .catch((err) => {
       if (err) {
@@ -84,16 +84,17 @@ module.exports.getpromocodeId = (req, res) => {
 };
 
 //Update promocode
+
 module.exports.updatepromocode = (req, res) => {
   PromoCode.findByIdAndUpdate({ _id: req.params.id }, req.body)
-    .then(() => {
-      PromoCode.findOne({ _id: req.params.id }).then((promocode) => {
-        res.sendStatus(200).send(promocode);
+    .then(function () {
+      PromoCode.findOne({ _id: req.params.id }).then(function (promocode) {
+        res.status(200).send(promocode);
       });
     })
     .catch((err) => {
       if (err) {
-        res.sendStatus(400).send(err);
+        res.status(400).send("can't update erro");
       }
     });
 };
@@ -102,7 +103,7 @@ module.exports.updatepromocode = (req, res) => {
 module.exports.deletepromocode = (req, res) => {
   PromoCode.findByIdAndRemove({ _id: req.params.id })
     .then((promocode) => {
-      res.sendStatus(200).send(promocode + "Document deleted");
+      res.status(200).send(promocode + "Document deleted");
     })
     .catch((err) => {
       if (err) {

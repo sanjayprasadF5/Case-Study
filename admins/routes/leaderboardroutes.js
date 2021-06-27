@@ -1,18 +1,18 @@
 const express = require("express");
 const router = express.Router();
+const axios = require("axios");
 // const adminAuth = require("../middlewares/adminMiddleware");
-const customerDetails = require("../models/customermodel");
 
 router.get("/leaderboard", (req, res) => {
-  customerDetails
-    .find({}, function (err, doc) {
-      if (err) {
-        res.status(400).json(err);
-      } else {
-        res.status(200).send(doc);
-      }
+  axios
+    .get("http://localhost:3000/leaderboard")
+    .then((response) => {
+      var leaderboard = response.data;
+      res.send(leaderboard);
     })
-    .sort({ noOfWashes: -1 });
+    .catch((err) => {
+      if (err) throw err;
+    });
 });
 
 module.exports = router;

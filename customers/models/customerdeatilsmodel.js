@@ -1,12 +1,7 @@
 const mongoose = require("mongoose");
 const { isMobilePhone } = require("validator");
 
-const profileSchema = new mongoose.Schema({
-  // userId: {
-  //   type: "String",
-  //   // unique: true,
-  //   required: [true, "please enter customerId"],
-  // },
+const customerSchema = new mongoose.Schema({
   name: {
     type: "String",
     lowercase: true,
@@ -35,28 +30,12 @@ const profileSchema = new mongoose.Schema({
     default: 0,
     min: 0,
   },
-  addresses: {
-    country: {
-      type: "String",
-      lowercase: true,
-      required: [true, "Please enter the country name"],
-    },
-    city: {
-      type: "String",
-      lowercase: true,
-      required: [true, "Please enter the city name"],
-    },
-    address: {
-      type: "String",
-      lowercase: true,
-      required: [true, "Please enter the address"],
-    },
-    zipcode: {
-      type: Number,
-      required: [true, "Please enter a zipcode"],
-    },
+  address: {
+    type: "string",
+    required: [true],
+    lowercase: true,
   },
 });
 
-const customerDetails = mongoose.model("customerdetail", profileSchema);
+const customerDetails = mongoose.model("customerdetail", customerSchema);
 module.exports = customerDetails;

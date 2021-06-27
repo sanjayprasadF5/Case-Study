@@ -33,30 +33,16 @@ module.exports.postCar = (req, res) => {
     carBrand: req.body.carBrand,
     status: req.body.status,
   };
-
   var car = new Car(newCar);
   car
     .save()
     .then(() => {
-      res.status(200).send(car);
+      res.status(200).json(car);
     })
     .catch((err) => {
-      // if (err) throw err;
-      // if (err) {
-      //   res.status(400).send("Can't create car'");
-      // }
       const errors = handleErrors(err);
       res.status(400).send(errors);
     });
-  // res.send(newCar);
-
-  // const { name, carBrand, status } = res.body;
-  // try {
-  //   const car = await Car.create({ name, carBrand, status });
-  //   res.status(201).json(car);
-  // } catch (err) {
-  //   res.status(400).json("Can't be created");
-  // }
 };
 
 //Get car route handlers
@@ -78,7 +64,7 @@ module.exports.getCar = (req, res) => {
 module.exports.getCarID = (req, res) => {
   Car.findById(req.params.id)
     .then((car) => {
-      res.sendstatus(200).json(car);
+      res.json(car);
     })
     .catch((err) => {
       if (err) {
@@ -93,7 +79,7 @@ module.exports.updateCar = (req, res) => {
   Car.findByIdAndUpdate({ _id: req.params.id }, req.body)
     .then(function () {
       Car.findOne({ _id: req.params.id }).then(function (car) {
-        res.sendStatus(200).send(car);
+        res.status(200).send(car);
       });
     })
     .catch((err) => {

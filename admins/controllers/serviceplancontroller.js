@@ -46,8 +46,7 @@ module.exports.postserviceplan = (req, res) => {
   serviceplan
     .save()
     .then((serviceplan) => {
-      console.log("Service plan saved");
-      res.status(200).send(serviceplan);
+      res.status(200).json(serviceplan);
     })
     .catch((err) => {
       //if (err) throw err;
@@ -105,7 +104,7 @@ module.exports.updateserviceplan = (req, res) => {
 module.exports.deleteserviceplan = (req, res) => {
   ServicePlan.findByIdAndRemove({ _id: req.params.id })
     .then((serviceplan) => {
-      res.send(serviceplan);
+      res.send(serviceplan + "Document Deleted");
     })
     .catch((err) => {
       if (err) {

@@ -1,6 +1,6 @@
 let chai = require("chai");
 let chaiHttps = require("chai-http");
-let server = require("../admins");
+let server = require("../customers");
 
 //Assertion sty;e
 
@@ -15,15 +15,14 @@ describe("Task Apis", () => {
    *
    */
 
-  describe("GET /car", () => {
+  describe("GET /customer", () => {
     it("it should get all task done", (done) => {
       chai
         .request(server)
-        .get("/car")
+        .get("/customer")
         .end((err, res) => {
           res.should.have.status(200);
           res.should.have.be.a("object");
-          // res.body.length.should.be.eq(15);
           done();
         });
     });
@@ -39,13 +38,13 @@ describe("Task Apis", () => {
     });
   });
 
-  describe("GET /car/:id", () => {
+  describe("GET /customer/:id", () => {
     it("it should get by id", (done) => {
-      const taskId = "60cb0f88ba904a1cb89685f2";
+      const taskId = "60d77f1ef1e75d2fcc19eb42";
 
       chai
         .request(server)
-        .get("/car" + taskId)
+        .get("/customer" + taskId)
         .end((err, response) => {
           response.body.should.be.a("object");
           done();
@@ -57,7 +56,7 @@ describe("Task Apis", () => {
 
       chai
         .request(server)
-        .get("/car" + taskId)
+        .get("/customer" + taskId)
         .end((err, response) => {
           response.should.have.status(404);
           done();
@@ -65,18 +64,23 @@ describe("Task Apis", () => {
     });
   });
 
-  describe("POST /car", () => {
+  describe("POST /customer", () => {
     {
       it("it should post", (done) => {
         const task = {
-          name: "Task",
-          carBrand: "DSF",
-          status: "active",
+          car: {
+            carname: "task",
+            carModelNo: "NewTask",
+          },
+          noofWashes: 4,
+          name: "Newname",
+          mobile: 1122321,
+          address: "near dk colony",
         };
 
         chai
           .request(server)
-          .post("/car")
+          .post("/customer")
           .send("task")
           .end((err, response) => {
             response.body.should.be.a("object");
@@ -86,18 +90,23 @@ describe("Task Apis", () => {
     }
   });
 
-  describe("PUT /car", () => {
+  describe("PUT /customer", () => {
     {
       it("it should put", (done) => {
         const task = {
-          name: "Task",
-          carBrand: "DSF",
-          status: "active",
+          car: {
+            carname: "task",
+            carModelNo: "NewTask",
+          },
+          noofWashes: 4,
+          name: "Newname",
+          mobile: 1122321,
+          address: "near dk colony",
         };
 
         chai
           .request(server)
-          .put("/car")
+          .put("/customer")
           .send("task")
           .end((err, response) => {
             response.body.should.be.a("object");
@@ -107,13 +116,13 @@ describe("Task Apis", () => {
     }
   });
 
-  describe("DELETE /car/:id", () => {
+  describe("DELETE /customer/:id", () => {
     {
       it("it should delete", (done) => {
-        const task = "60cf0c5f39447434289dcb27";
+        const task = "60cf4a2148e10e1d2c7b3920";
         chai
           .request(server)
-          .delete("/car/:id" + task)
+          .delete("/customer/:id" + task)
           .send("task")
           .end((err, response) => {
             response.body.should.be.a("object");

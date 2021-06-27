@@ -63,17 +63,19 @@ module.exports.getidaddon = (req, res) => {
 };
 
 //PUT /
-module.exports.putaddon = function (req, res) {
-  const id = req.params.id;
-  const newaddon = req.body;
-  Addon.findByIdAndUpdate(id, newaddon, { new: true }, function (err, doc) {
-    if (err) {
-      console.log(err);
-      res.status(400).json(err);
-    } else {
-      res.status(200).json(doc);
-    }
-  });
+
+module.exports.putaddon = (req, res) => {
+  Addon.findByIdAndUpdate({ _id: req.params.id }, req.body)
+    .then(() => {
+      Addon.findOne({ _id: req.params.id }).then((addonupdate) => {
+        res.status(200).json(addonupdate);
+      });
+    })
+    .catch((err) => {
+      if (err) {
+        res.status(400).json(err);
+      }
+    });
 };
 
 //DELETE
@@ -85,7 +87,7 @@ module.exports.deleteaddon = function (req, res) {
       console.log(err);
       res.status(400).json(err);
     } else {
-      res.status(200).send(doc);
+      res.status(200).send(doc + "Delete");
     }
   });
 };
