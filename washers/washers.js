@@ -8,10 +8,10 @@ const app = express();
 /----------------------------------------------------------------/;
 //Swagger API Testing
 
-// const swaggerUi = require("swagger-ui-express");
+const swaggerUi = require("swagger-ui-express");
 
-// swaggerDocument = require("./swaggers/washerdetails.json");
-// app.use("/api-washer", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+swaggerDocument = require("./swaggers/washer.json");
+app.use("/api-washer", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // //routes
 

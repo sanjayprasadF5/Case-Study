@@ -1,0 +1,15 @@
+{
+  "name": "washers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "washers.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha 'test/*.js' --timeout 10000 || true "
+  },
+  "keywords": [],
+  "author": "sanjay",
+  "license": "cg"
+}

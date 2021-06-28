@@ -1,5 +1,5 @@
 const customerDetails = require("../models/customerdeatilsmodel");
-
+const MongoClient = require("mongodb").MongoClient;
 //handle errors
 const handleErrors = (err) => {
   let error = {};
@@ -77,7 +77,7 @@ module.exports.update_customer = (req, res) => {
 
 //Delete customer
 
-//delete service ServicePlan
+//delete service Customer
 module.exports.delete_customer = (req, res) => {
   customerDetails
     .findByIdAndRemove({ _id: req.params.id })
@@ -89,4 +89,20 @@ module.exports.delete_customer = (req, res) => {
         res.status(400).json(err);
       }
     });
+};
+
+module.exports.get_washer_name = (req, res) => {
+  MongoClient.connect(
+    `mongodb+srv://sanjayprasadF5:sanjay123@cluster0.t4byc.mongodb.net/washerdb?retryWrites=true&w=majority`,
+    { useNewUrlParser: true, useUnifiedTopology: true },
+    function (connectErr, client) {
+      const coll = client.db("washerdb").collection("washerdetails");
+      const query = { name: req.params.name };
+      coll.find(query).toArray(function (err, result) {
+        if (err) throw err;
+        res.send(result);
+        client.close();
+      });
+    }
+  );
 };
