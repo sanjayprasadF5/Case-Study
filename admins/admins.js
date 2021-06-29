@@ -14,17 +14,17 @@ const swaggerUi = require("swagger-ui-express");
 swaggerDocument = require("./swaggerfile/carswagger.json");
 app.use("/api-car", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-//ServicePlan
-swaggerDocument2 = require("./swaggerfile/serviceswagger.json");
-app.use("/api-service", swaggerUi.serve, swaggerUi.setup(swaggerDocument2));
+// //ServicePlan
+// swaggerDocument2 = require("./swaggerfile/serviceswagger.json");
+// app.use("/api-service", swaggerUi.serve, swaggerUi.setup(swaggerDocument2));
 
-//Add on
-swaggerDocument3 = require("./swaggerfile/addonswagger.json");
-app.use("/api-addon", swaggerUi.serve, swaggerUi.setup(swaggerDocument3));
+// //Add on
+// swaggerDocument3 = require("./swaggerfile/addonswagger.json");
+// app.use("/api-addon", swaggerUi.serve, swaggerUi.setup(swaggerDocument3));
 
-//Promocode
-swaggerDocument4 = require("./swaggerfile/promoswagger.json");
-app.use("/api-promocode", swaggerUi.serve, swaggerUi.setup(swaggerDocument4));
+// //Promocode
+// swaggerDocument4 = require("./swaggerfile/promoswagger.json");
+// app.use("/api-promocode", swaggerUi.serve, swaggerUi.setup(swaggerDocument4));
 
 // Washer
 // swaggerDocument5 = require("./swaggerfile/washerswagger.json");

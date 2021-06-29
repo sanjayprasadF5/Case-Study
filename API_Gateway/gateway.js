@@ -14,11 +14,31 @@ api.get("/admin", (req, res) => {
   });
 });
 
-//get Admin login
-api.get("/admin", (req, res) => {
-  axios.get("http://localhost:5000/login", req.body).then((response) => {
-    res.send(response.data);
-  });
+api.post("/adminsignup", (req, res) => {
+  axios
+    .post("http://localhost:5000/signup", req.body)
+    .then((response) => {
+      console.log(response.data);
+      var admin = response.data;
+      res.send(admin);
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+});
+
+//admin login
+api.post("/adminlogin", (req, res) => {
+  axios
+    .post("http://localhost:5000/login", req.body)
+    .then((response) => {
+      console.log(response.data);
+      var admin = response.data;
+      res.send(admin);
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
 });
 
 //Admin service
@@ -54,21 +74,18 @@ api.get("/addon", (req, res) => {
 // });
 
 //post customer and car
-// api.post("/customersignup", (req, res) => {
-//   axios
-//     .post("http://localhost:3000/signup", {
-//       emial: "goten@google.com",
-//       password: "goten123",
-//     })
-//     .then((response) => {
-//       console.log(response.data);
-//       var customer = response.data;
-//       res.send(customer);
-//     })
-//     .catch((err) => {
-//       console.log(err.message);
-//     });
-// });
+api.post("/customersignup", (req, res) => {
+  axios
+    .post("http://localhost:3000/signup", req.body)
+    .then((response) => {
+      console.log(response.data);
+      var customer = response.data;
+      res.send(customer);
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+});
 
 //signup
 api.get("/login", (req, res) => {
@@ -89,6 +106,20 @@ api.get("/viewwasher", (req, res) => {
   axios.get("http://localhost:7000/washer", req.body).then((response) => {
     res.send(response.data);
   });
+});
+
+//Sign As Customers
+api.post("/washersignup", (req, res) => {
+  axios
+    .post("http://localhost:7000/signup", req.body)
+    .then((response) => {
+      console.log(response.data);
+      var washer = response.data;
+      res.send(washer);
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
 });
 
 const port = process.env.PORT || 8000;
