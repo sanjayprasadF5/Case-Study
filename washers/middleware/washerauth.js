@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const customerAuth = (req, res, next) => {
+const washerAuth = (req, res, next) => {
   if (!req.headers.authorization) {
     return res.status(401).send("Unauthorized Request");
   }
@@ -8,7 +8,7 @@ const customerAuth = (req, res, next) => {
   if (token === "null") {
     return res.status(401).send("Unauthorized Request");
   }
-  let payload = jwt.verify(token, "User Is Boss");
+  let payload = jwt.verify(token, "Washer Is Boss");
   if (!payload) {
     return res.status(401).send("Unauthorized Request");
   }
@@ -53,4 +53,4 @@ const customerAuth = (req, res, next) => {
 //   }
 // };
 
-module.exports = customerAuth;
+module.exports = washerAuth;

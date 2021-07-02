@@ -2,11 +2,10 @@ const bodyParser = require("body-parser");
 const profileController = require("../controllers/washerdetailsController");
 const express = require("express");
 const router = express.Router();
-
-// const requireAuth = require("../middlewares/authMiddleware");
+const washerAuth = require("../middleware/washerauth");
 
 //Get profile page
-router.get("/washer", profileController.get_washer);
+router.get("/washer", washerAuth, profileController.get_washer);
 
 router.post("/washer", profileController.post_washer);
 

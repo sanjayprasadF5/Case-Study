@@ -27,6 +27,7 @@ const promocode = require("./routes/viewpromoRoutes");
 const Service = require("./routes/viewserviceRoutes");
 const Addon = require("./routes/viewaddonRoutes");
 const leaderboard = require("./routes/leaderboard");
+const orderDetail = require("./routes/orderRoutes");
 //Connect to Customers Database
 const dbURI =
   "mongodb+srv://sanjayprasadF5:sanjay123@cluster0.t4byc.mongodb.net/customerdb?retryWrites=true&w=majority";
@@ -55,6 +56,7 @@ app.use("/", [
   Service,
   Addon,
   leaderboard,
+  orderDetail,
   // myordersRoutes,
   // scheduledLater,
   // leaderboard,

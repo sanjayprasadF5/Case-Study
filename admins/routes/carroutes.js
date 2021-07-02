@@ -5,6 +5,10 @@ const bodyParser = require("body-parser");
 const adminAuth = require("../middlewares/adminmiddleware");
 const carcontroller = require("../controllers/carcontroller");
 //Routes for car
+// const swaggerUi = require("swagger-ui-express");
+
+// const swaggerDocument = require("../swaggerfile/carswagger.json");
+// router.use("/api-car", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 router.get("/car", carcontroller.getCar);
 

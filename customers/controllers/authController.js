@@ -6,12 +6,12 @@ const handleErrors = (err) => {
   let error = { email: "", password: "" };
 
   //incorrect email
-  if (err.message === "Incorrect email") {
+  if (err.message === "incorrect email") {
     error.email = "Entered email is not registered";
   }
 
   //incorrect password
-  if (err.message === "Incorrect Password") {
+  if (err.message === "incorrect Password") {
     error.password = "Entered password is incorrect";
   }
 
@@ -21,7 +21,7 @@ const handleErrors = (err) => {
     return error;
   }
 
-  if (err.message.includes("customers validation failed")) {
+  if (err.message.includes("User validation failed")) {
     Object.values(err.errors).forEach(({ properties }) => {
       error[properties.path] = properties.message;
     });
@@ -32,7 +32,7 @@ const handleErrors = (err) => {
 //Creating JWT Token
 const maxAge = 2 * 24 * 60 * 60;
 const createToken = (id) => {
-  return jwt.sign({ id }, "Customer Is Boss", {
+  return jwt.sign({ id }, "User Is Boss", {
     expiresIn: maxAge,
   });
 };
@@ -48,11 +48,11 @@ module.exports.post_signup = async function (req, res) {
   try {
     const user = await User.create({ email, password });
     const token = createToken(user._id);
-    //res.cookie('jwt',token, {httpOnly: true, maxAge : maxAge*1000});
-    res.status(201).send(user);
+    res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
+    res.status(200).json(user);
   } catch (error) {
     const err = handleErrors(error);
-    res.status(400).json(err);
+    res.status(400).json(error);
   }
 };
 
@@ -62,13 +62,13 @@ module.exports.get_login = function (req, res) {
   res.send("this is the login page");
 };
 
-module.exports.post_login = async function (req, res) {
+module.exports.post_login = function (req, res) {
   const { email, password } = req.body;
   try {
-    const user = await User.login(email, password);
+    const user = User.login(email, password);
     const token = createToken(user._id);
-    //res.cookie('jwt',token, {httpOnly: true, maxAge : maxAge*1000});
-    res.status(201).send(token);
+    // res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
+    res.status(200).send(token);
   } catch (error) {
     const err = handleErrors(error);
     res.status(400).json(err);

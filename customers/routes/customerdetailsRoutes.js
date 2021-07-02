@@ -4,10 +4,10 @@ const profileController = require("../controllers/customerdetailsController");
 const express = require("express");
 const router = express.Router();
 
-// const requireAuth = require("../middlewares/authMiddleware");
+const customerAuth = require("../middlewares/authMiddleware");
 
 //Get profile page
-router.get("/customer", profileController.get_customer);
+router.get("/customer", customerAuth, profileController.get_customer);
 
 router.post("/customer", profileController.post_customer);
 

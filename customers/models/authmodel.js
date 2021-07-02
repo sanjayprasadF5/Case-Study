@@ -32,10 +32,10 @@ userSchema.statics.login = async function (email, password) {
     if (auth) {
       return user;
     }
-    throw Error("Incorrect Password");
+    throw Error("incorrect Password");
   }
-  throw Error("Incorrect email");
+  throw Error("incorrect email");
 };
 
-const User = mongoose.model("Customer", userSchema);
+const User = mongoose.model("customer", userSchema);
 module.exports = User;

@@ -31,6 +31,7 @@ const handlerError = (err) => {
       error[properties.path] = properties.message;
     });
   }
+  return error;
 };
 
 //Creating JWT token
@@ -48,18 +49,19 @@ module.exports.getsignup = (req, res) => {
   res.send("I m singing up");
 };
 
-//Signup new
+// Signup new
 module.exports.postsignup = async (req, res) => {
   const { email, password } = req.body;
 
   try {
     const admin = await Admin.create({ email, password });
     const token = createToken(admin._id);
+
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-    res.status(200).json(admin.id);
-  } catch (err) {
-    const error = handlerError(err);
-    res.status(400).json(error);
+    res.status(201).json(admin.id);
+  } catch (error) {
+    const err = handlerError(error);
+    res.status(400).json(err);
     console.log(error);
   }
 };
@@ -69,15 +71,16 @@ module.exports.getlogin = (req, res) => {
   res.send("I m get login");
 };
 
-//Login--Post
+// Login--Post
 module.exports.postlogin = async function (req, res) {
   const { email, password } = req.body;
 
   try {
     const admin = await Admin.login(email, password);
     const token = createToken(admin._id);
-    //res.cookie('ajwt',token, {httpOnly: true, maxAge : maxAge*1000});
-    res.status(200).send(token);
+
+    // res.cookie("ajwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
+    res.status(201).send({ token });
   } catch (error) {
     const err = handlerError(error);
     res.status(400).send(err);

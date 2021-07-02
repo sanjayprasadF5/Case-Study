@@ -20,6 +20,10 @@ describe("Task Apis", () => {
       chai
         .request(server)
         .get("/serviceplan")
+        // .set(
+        //   "headers",
+        //   "jwt =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZGVlY2UwNDFiYTQ0NDJlY2YxMjdmMyIsImlhdCI6MTYyNTIyMzExNCwiZXhwIjoxNjI1Mzk1OTE0fQ.fLwYa62A_yht9O_TK2pReocTpa15HKlWO9V_D5QnWX4"
+        // )
         .end((err, res) => {
           res.should.have.status(200);
           res.should.have.be.a("object");

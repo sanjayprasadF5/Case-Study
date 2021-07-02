@@ -7,16 +7,13 @@ const cors = require("cors");
 const app = express();
 
 //----------------------------------------------------------------/
+//Swagger
+
 const swaggerUi = require("swagger-ui-express");
-// swaggerDocument = require("./swagger.json");
 
 //Car
-swaggerDocument = require("./swaggerfile/carswagger.json");
+const swaggerDocument = require("./swaggerfile/carswagger.json");
 app.use("/api-car", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-// //ServicePlan
-// swaggerDocument2 = require("./swaggerfile/serviceswagger.json");
-// app.use("/api-service", swaggerUi.serve, swaggerUi.setup(swaggerDocument2));
 
 // //Add on
 // swaggerDocument3 = require("./swaggerfile/addonswagger.json");
@@ -26,11 +23,9 @@ app.use("/api-car", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // swaggerDocument4 = require("./swaggerfile/promoswagger.json");
 // app.use("/api-promocode", swaggerUi.serve, swaggerUi.setup(swaggerDocument4));
 
-// Washer
-// swaggerDocument5 = require("./swaggerfile/washerswagger.json");
-// app.use("/api-washer", swaggerUi.serve, swaggerUi.setup(swaggerDocument5));
-
-//----------------------------------------------------------------/
+// //ServicePlan
+// swaggerDocument2 = require("../swaggerfile/serviceswagger.json");
+// router.use("/api-service", swaggerUi.serve, swaggerUi.setup(swaggerDocument2));
 
 //Importing routes
 const adminroutes = require("./routes/adminroutes");

@@ -17,6 +17,7 @@ app.use("/api-washer", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const washerdetails = require("./routes/washerdetailsRoutes");
 const washerauth = require("./routes/washerauthRoutes");
+const washerorder = require("./routes/orderwasherRoutes");
 //Connect to Customers Database
 const dbURI =
   "mongodb+srv://sanjayprasadF5:sanjay123@cluster0.t4byc.mongodb.net/washerdb?retryWrites=true&w=majority";
@@ -35,7 +36,7 @@ mongoose.connect(
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
-app.use("/", [washerdetails, washerauth]);
+app.use("/", [washerdetails, washerauth, washerorder]);
 
 const port = process.env.PORT || 7000;
 
