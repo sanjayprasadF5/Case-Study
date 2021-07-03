@@ -18,16 +18,13 @@ const authRoutes = require("./routes/authRoutes");
 // const orderRoutes = require("./routes/carRoutes");
 const carRoutes = require("./routes/viewcarRoutes");
 const profileRoutes = require("./routes/customerdetailsRoutes");
-// const myordersRoutes = require("./routes/myorderRoutes");
-// const scheduledLater = require("./routes/scheduleLaterRoutes");
-// const leaderboard = require("./routes/leaderboardRoutes");
-// const washerRoute = require("./routes/findwasherRoutes");
-// const serviceAddonPromocode = require("./routes/service_addon_promocode");
 const promocode = require("./routes/viewpromoRoutes");
 const Service = require("./routes/viewserviceRoutes");
 const Addon = require("./routes/viewaddonRoutes");
 const leaderboard = require("./routes/leaderboard");
 const orderDetail = require("./routes/orderRoutes");
+const payment = require("./routes/payment");
+
 //Connect to Customers Database
 const dbURI =
   "mongodb+srv://sanjayprasadF5:sanjay123@cluster0.t4byc.mongodb.net/customerdb?retryWrites=true&w=majority";
@@ -50,7 +47,7 @@ app.use(cors());
 app.use("/", [
   authRoutes,
   profileRoutes,
-  // orderRoutes,
+  payment,
   carRoutes,
   promocode,
   Service,

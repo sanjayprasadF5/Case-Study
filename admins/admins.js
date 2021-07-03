@@ -11,9 +11,9 @@ const app = express();
 
 const swaggerUi = require("swagger-ui-express");
 
-//Car
-const swaggerDocument = require("./swaggerfile/carswagger.json");
-app.use("/api-car", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// //Car
+// const swaggerDocument = require("./swaggerfile/carswagger.json");
+// app.use("/api-car", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // //Add on
 // swaggerDocument3 = require("./swaggerfile/addonswagger.json");
@@ -23,9 +23,9 @@ app.use("/api-car", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // swaggerDocument4 = require("./swaggerfile/promoswagger.json");
 // app.use("/api-promocode", swaggerUi.serve, swaggerUi.setup(swaggerDocument4));
 
-// //ServicePlan
-// swaggerDocument2 = require("../swaggerfile/serviceswagger.json");
-// router.use("/api-service", swaggerUi.serve, swaggerUi.setup(swaggerDocument2));
+//ServicePlan
+swaggerDocument2 = require("./swaggerfile/serviceswagger.json");
+app.use("/api-service", swaggerUi.serve, swaggerUi.setup(swaggerDocument2));
 
 //Importing routes
 const adminroutes = require("./routes/adminroutes");

@@ -10,7 +10,7 @@ const carcontroller = require("../controllers/carcontroller");
 // const swaggerDocument = require("../swaggerfile/carswagger.json");
 // router.use("/api-car", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-router.get("/car", carcontroller.getCar);
+router.get("/car", adminAuth, carcontroller.getCar);
 
 //POST routes to create new car
 router.post("/car", carcontroller.postCar);

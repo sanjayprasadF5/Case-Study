@@ -5,7 +5,7 @@ const router = express.Router();
 const washerAuth = require("../middleware/washerauth");
 
 //Get profile page
-router.get("/washer", washerAuth, profileController.get_washer);
+router.get("/washer", profileController.get_washer);
 
 router.post("/washer", profileController.post_washer);
 

@@ -16,16 +16,16 @@ describe("Task Apis", () => {
    */
 
   describe("GET /customer", () => {
-    it("it should get all task done", (done) => {
-      chai
-        .request(server)
-        .get("/customer")
-        .end((err, res) => {
-          res.should.have.status(200);
-          res.should.have.be.a("object");
-          done();
-        });
-    });
+    // it("it should get all task done", (done) => {
+    //   chai
+    //     .request(server)
+    //     .get("/customer")
+    //     .end((err, res) => {
+    //       res.should.have.status(200);
+    //       res.should.have.be.a("object");
+    //       done();
+    //     });
+    // });
 
     it("it should get not all task done", (done) => {
       chai

@@ -1,0 +1,17 @@
+{
+  "name": "xpayment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "payment.js",
+  "scripts": {
+    "payment": "nodemon ./payment.js"
+  },
+  "keywords": [],
+  "author": "sanjay",
+  "license": "cg",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.9",
+    "stripe": "^8.160.0"
+  }
+}

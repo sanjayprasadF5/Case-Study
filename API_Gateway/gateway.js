@@ -71,7 +71,7 @@ api.get("/addon", (req, res) => {
 
 //Customer
 
-//post customer and car
+//Signup
 api.post("/customersignup", (req, res) => {
   axios
     .post("http://localhost:3000/signup", req.body)
@@ -142,7 +142,30 @@ api.post("/washerlogin", (req, res) => {
     });
 });
 
+api.get("/viewwasher", (req, res) => {
+  axios.get("http://localhost:7000/washer", req.body).then((response) => {
+    res.send(response.data);
+  });
+});
+
 //----------------------------------------------------------------//
+
+//Payment
+
+api.post("/paymentcustomer", (req, res) => {
+  axios
+    .post("http://localhost:3000/dopayment", req.body)
+    .then((response) => {
+      console.log(response.data);
+      var payment = response.data;
+      res.send(payment);
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+});
+
+//
 const port = process.env.PORT || 8000;
 
 api.listen(port, function () {
