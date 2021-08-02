@@ -23,6 +23,7 @@
     "validator": "^13.6.0"
   },
   "scripts": {
+    "payment":"nodemon ./xpayment/payment.js",
     "gateway": "nodemon ./api_gateway/gateway.js",
     "washer-dev": "nodemon ./washers/washers.js",
     "admin-dev": "nodemon ./admins/admins.js",
